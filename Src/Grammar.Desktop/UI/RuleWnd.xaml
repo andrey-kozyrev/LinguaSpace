@@ -1,0 +1,175 @@
+﻿<Window x:Class="LinguaSpace.Grammar.UI.RuleWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    xmlns:gr="clr-namespace:LinguaSpace.Grammar.UI"
+    Style="{StaticResource TitleWindow}"
+    WindowStartupLocation="CenterOwner"
+    SizeToContent="Manual"
+    ResizeMode="CanResizeWithGrip"
+    FocusManager.FocusedElement="{Binding ElementName=comment}"
+    Icon="../Resources/Icons/grammar.ico"
+    ShowInTaskbar="False"
+    MinHeight="450" 
+    MinWidth="500"
+    Height="500"
+    Width="850">
+	<Window.Resources>
+
+		<Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="Margin" Value="10 5 5 5"/>
+		</Style>
+
+		<ui:ExampleConverter x:Key="ExampleConverter"/>
+	
+		<DataTemplate x:Key="ExampleTemplate">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<TextBlock Text="{Binding Path=NativeText}" Foreground="{Binding Path=Foreground}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWithOverflow"/>
+				<FlowDocumentScrollViewer VerticalScrollBarVisibility="Hidden"
+									  Grid.Row="0" Grid.Column="1"
+									  Margin="5 -5 0 0"
+									  Foreground="{Binding Path=Foreground}"
+									  Document="{Binding Path=TargetText, Converter={StaticResource ExampleConverter}}"
+									  IsEnabled="False"/>
+				<CheckBox IsChecked="{Binding Path=Active}" Grid.Row="0" Grid.Column="2" Margin="5 0 10 5" Focusable="False"/>
+                <Grid.InputBindings>
+                    <MouseBinding Command="{x:Static ui:EditCommands.Edit}" Gesture="LeftDoubleClick"/>
+                </Grid.InputBindings>
+			</Grid>
+		</DataTemplate>
+		
+		<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+			<Setter Property="Padding" Value="5 5 0 0"/>
+		</Style>
+		
+	</Window.Resources>
+
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" Grid.Column="0" Margin="10" KeyboardNavigation.DirectionalNavigation="None">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.Resources>
+				<Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+					<Setter Property="VerticalAlignment" Value="Top"/>
+					<Setter Property="Margin" Value="10 13 5 10"/>
+				</Style>
+			</Grid.Resources>
+			<Label Content="_Rule:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=comment}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="comment" 
+					 Text="{Binding Path=Comment, UpdateSourceTrigger=PropertyChanged}" 
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <TextBox.CommandBindings>
+                    <CommandBinding CanExecute="OnCanHighlight" Executed="OnHighlight" Command="{x:Static ui:EditCommands.Highlight}"/>
+                </TextBox.CommandBindings>
+            </TextBox>
+                <Label Content="_Examples:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=examples}" Margin="10 35 10 10"/>
+            <DockPanel Grid.Row="1" Grid.Column="1" FocusManager.IsFocusScope="True" FocusManager.FocusedElement="{Binding ElementName=examples}">
+                <ToolBar DockPanel.Dock="Top" Margin="7 5 9 -10" Background="{x:Static SystemColors.WindowBrush}" FocusManager.IsFocusScope="True">
+                    <ToolBar.Resources>
+                        <Style TargetType="Image" BasedOn="{StaticResource ToolbarImage}"/>
+                        <Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource ToolbarImage}"/>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                            <Setter Property="Margin" Value="5 0 5 0"/>
+                        </Style>
+                    </ToolBar.Resources>
+                    <Button Command="{x:Static ui:EditCommands.New}" ToolTip="Add new item..." ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/New.gif"/>
+                            <TextBlock Text="Add"/>
+					</StackPanel>
+                    </Button>
+                    <Button Command="{x:Static ui:EditCommands.Edit}" ToolTip="Modify selected item..." ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.gif"/>
+                            <TextBlock Text="Modify"/>
+					</StackPanel>
+                    </Button>
+                    <Button Command="{x:Static ui:EditCommands.Delete}" ToolTip="Delete selected item" ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.gif"/>
+                            <TextBlock Text="Delete"/>
+					</StackPanel>
+                    </Button>
+                    <Button Command="{x:Static ui:EditCommands.MoveUp}" ToolTip="Move selected item up" ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Up.gif"/>
+                            <TextBlock Text="Up"/>
+					</StackPanel>
+                    </Button>
+                    <Button Command="{x:Static ui:EditCommands.MoveDown}" ToolTip="Move selected item down" ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Down.gif"/>
+                            <TextBlock Text="Down"/>
+					</StackPanel>
+                    </Button>
+                    <Separator/>
+                    <Button Command="{x:Static ui:EditCommands.Cut}" ToolTip="Cut selected item" ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Cut.gif"/>
+                            <TextBlock Text="Cut"/>
+				    </StackPanel>
+                    </Button>
+                    <Button Command="{x:Static ui:EditCommands.Copy}" ToolTip="Copy selected item" ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Copy.gif"/>
+                            <TextBlock Text="Copy"/>
+				    </StackPanel>
+                    </Button>
+                    <Button Command="{x:Static ui:EditCommands.Paste}" ToolTip="Paste selected item" ToolTipService.ShowOnDisabled="True">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Paste.gif"/>
+                            <TextBlock Text="Paste"/>
+				    </StackPanel>
+                    </Button>
+                </ToolBar>
+                <ListBox x:Name="examples"
+					 ItemsSource="{Binding Path=Examples}"
+                     ContextMenu="{StaticResource EditContextMenu}"
+					 ItemTemplate="{StaticResource ExampleTemplate}"
+					 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+					 ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListBox.CommandBindings>
+                        <CommandBinding Command="{x:Static ui:EditCommands.New}" CanExecute="OnCanExampleNew" Executed="OnExampleNew"/>
+                        <CommandBinding Command="{x:Static ui:EditCommands.Edit}" CanExecute="OnCanExampleEdit" Executed="OnExampleEdit"/>
+                        <CommandBinding Command="{x:Static ui:EditCommands.Delete}" CanExecute="OnCanExampleDelete" Executed="OnExampleDelete"/>
+                        <CommandBinding Command="{x:Static ui:EditCommands.MoveUp}" CanExecute="OnCanExampleUp" Executed="OnExampleUp"/>
+                        <CommandBinding Command="{x:Static ui:EditCommands.MoveDown}" CanExecute="OnCanExampleDown" Executed="OnExampleDown"/>
+                        <CommandBinding Command="{x:Static ui:EditCommands.Cut}" CanExecute="OnCanCutExample" Executed="OnCutExample"/>
+                        <CommandBinding Command="{x:Static ui:EditCommands.Copy}" CanExecute="OnCanCopyExample" Executed="OnCopyExample"/>
+                        <CommandBinding Command="{x:Static ui:EditCommands.Paste}" CanExecute="OnCanPasteExample" Executed="OnPasteExample"/>
+                        <CommandBinding Command="{x:Static gr:GrammarCommands.ToggleActive}" CanExecute="OnCanToggleActive" Executed="OnToggleActive"/>
+                    </ListBox.CommandBindings>
+                </ListBox>
+            </DockPanel>
+			<Label Content="_Active:" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=active}"/>
+			<CheckBox IsChecked="{Binding Path=Active, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Name="active"/>
+		</Grid>
+		<ui:StatusCtrl Grid.Row="2" Grid.Column="1" x:Name="status"/>
+	</Grid>
+</Window>

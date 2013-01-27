@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADAPTERRAM" xml:space="preserve">
+    <value>AdapterRAM</value>
+  </data>
+  <data name="ADAPTERTYPE" xml:space="preserve">
+    <value>AdapterType</value>
+  </data>
+  <data name="ARCHITECTURE" xml:space="preserve">
+    <value>Architecture</value>
+  </data>
+  <data name="b" xml:space="preserve">
+    <value>b</value>
+  </data>
+  <data name="BIOS" xml:space="preserve">
+    <value>BIOS</value>
+  </data>
+  <data name="BUILDNUMBER" xml:space="preserve">
+    <value>BuildNumber</value>
+  </data>
+  <data name="BUILDTYPE" xml:space="preserve">
+    <value>BuildType</value>
+  </data>
+  <data name="c" xml:space="preserve">
+    <value>c</value>
+  </data>
+  <data name="CAPTION" xml:space="preserve">
+    <value>Caption</value>
+  </data>
+  <data name="CDROMDRIVE" xml:space="preserve">
+    <value>CDROMDrive</value>
+  </data>
+  <data name="COMPANY" xml:space="preserve">
+    <value>LinguaSpace</value>
+  </data>
+  <data name="COUNTRYCODE" xml:space="preserve">
+    <value>CountryCode</value>
+  </data>
+  <data name="DESKTOPMONITOR" xml:space="preserve">
+    <value>DesktopMonitor</value>
+  </data>
+  <data name="DISKDRIVE" xml:space="preserve">
+    <value>DiskDrive</value>
+  </data>
+  <data name="FAMILY" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="FORMAT_HEX" xml:space="preserve">
+    <value>0x{0}</value>
+  </data>
+  <data name="FORMAT_TRIAL_COUNTER_PATH" xml:space="preserve">
+    <value>CLSID\{{{0}}}</value>
+  </data>
+  <data name="FROM" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="INSTALLDATE" xml:space="preserve">
+    <value>InstallDate</value>
+  </data>
+  <data name="INTERFACETYPE" xml:space="preserve">
+    <value>InterfaceType</value>
+  </data>
+  <data name="IS_KEY_CODE_VALID" xml:space="preserve">
+    <value>IsKeyCodeValid</value>
+  </data>
+  <data name="KEY_CODE" xml:space="preserve">
+    <value>KeyCode</value>
+  </data>
+  <data name="KEY_CODE_IS_NOT_VALID" xml:space="preserve">
+    <value>Key code is not valid.</value>
+  </data>
+  <data name="KEY_CODE_IS_VALID" xml:space="preserve">
+    <value>Key code is valid.</value>
+  </data>
+  <data name="LEVEL" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="MACADDRESS" xml:space="preserve">
+    <value>MACAddress</value>
+  </data>
+  <data name="MAJOR_VERSION" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="MANUFACTURER" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="MINOR_VERSION" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MODEL" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="MONITORMANUFACTURER" xml:space="preserve">
+    <value>MonitorManufacturer</value>
+  </data>
+  <data name="MOTHERBOARDDEVICE" xml:space="preserve">
+    <value>MotherboardDevice</value>
+  </data>
+  <data name="NAME" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="NAME1" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="NETWORKADAPTER" xml:space="preserve">
+    <value>NetworkAdapter</value>
+  </data>
+  <data name="OPERATINGSYSTEM" xml:space="preserve">
+    <value>OperatingSystem</value>
+  </data>
+  <data name="PATCH_VERSION" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PRIMARYBUSTYPE" xml:space="preserve">
+    <value>PrimaryBusType</value>
+  </data>
+  <data name="PROCESSOR" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="PROCESSORID" xml:space="preserve">
+    <value>ProcessorId</value>
+  </data>
+  <data name="PROCESSORTYPE" xml:space="preserve">
+    <value>ProcessorType</value>
+  </data>
+  <data name="PRODUCT" xml:space="preserve">
+    <value>Words</value>
+  </data>
+  <data name="PRODUCT_VERSION_FULL" xml:space="preserve">
+    <value>LinguaSpace Words 3.0.0</value>
+  </data>
+  <data name="PRODUCT_VERSION_SHORT" xml:space="preserve">
+    <value>LinguaSpace Words 3.0</value>
+  </data>
+  <data name="REGISTEREDUSER" xml:space="preserve">
+    <value>RegisteredUser</value>
+  </data>
+  <data name="REG_FILE_SIGNITURE" xml:space="preserve">
+    <value>{DD6763D7-FC91-4811-A27B-431574D0CA8B}</value>
+  </data>
+  <data name="SECONDARYBUSTYPE" xml:space="preserve">
+    <value>SecondaryBusType</value>
+  </data>
+  <data name="SERIALNUMBER" xml:space="preserve">
+    <value>SerialNumber</value>
+  </data>
+  <data name="SHA1" xml:space="preserve">
+    <value>SHA1</value>
+  </data>
+  <data name="SMBIOSBIOSVERSION" xml:space="preserve">
+    <value>SMBIOSBIOSVersion</value>
+  </data>
+  <data name="SMBIOSMAJORVERSION" xml:space="preserve">
+    <value>SMBIOSMajorVersion</value>
+  </data>
+  <data name="SMBIOSMINORVERSION" xml:space="preserve">
+    <value>SMBIOSMinorVersion</value>
+  </data>
+  <data name="SOUNDDEVICE" xml:space="preserve">
+    <value>SoundDevice</value>
+  </data>
+  <data name="STEPPING" xml:space="preserve">
+    <value>Stepping</value>
+  </data>
+  <data name="VERSION_FULL" xml:space="preserve">
+    <value>3.0.0</value>
+  </data>
+  <data name="VERSION_SHORT" xml:space="preserve">
+    <value>3.0</value>
+  </data>
+  <data name="VIDEOCONTROLLER" xml:space="preserve">
+    <value>VideoController</value>
+  </data>
+  <data name="WIN32_" xml:space="preserve">
+    <value>Win32_</value>
+  </data>
+  <data name="WINDOWSDIRECTORY" xml:space="preserve">
+    <value>WindowsDirectory</value>
+  </data>
+  <data name="_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="SELECT_META" xml:space="preserve">
+    <value>SELECT * FROM Meta</value>
+  </data>
+</root>

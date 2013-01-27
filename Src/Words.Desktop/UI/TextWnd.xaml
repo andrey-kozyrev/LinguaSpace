@@ -1,0 +1,25 @@
+﻿<Window x:Class="LinguaSpace.Words.UI.TextWnd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:this="clr-namespace:LinguaSpace.Words.UI"
+        xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+        Style="{StaticResource TitleWindow}"
+        MinWidth="350"
+	      SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+      	WindowStartupLocation="CenterOwner"
+        x:Name="window"
+        Icon="../Resources/Icons/16/LinguaSpace.png"
+	      FocusManager.FocusedElement="{Binding ElementName=textBox}"
+        ShowInTaskbar="False">
+  <StackPanel>
+    <DockPanel Margin="10">
+      <Label DockPanel.Dock="Left" 
+             x:Name="labelName"
+             Content="{Binding Path=Name}"
+             Target="{Binding ElementName=textBox}"/>
+      <TextBox x:Name="textBox" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
+    </DockPanel>
+    <ui:StatusCtrl x:Name="status"/>
+  </StackPanel>
+</Window>

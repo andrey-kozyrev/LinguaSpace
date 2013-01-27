@@ -1,0 +1,88 @@
+﻿<Window x:Class="LinguaSpace.Words.UI.MeaningFindWnd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	    xmlns:this="clr-namespace:LinguaSpace.Words.UI"
+	    xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+        Style="{StaticResource TitleWindow}"
+	    WindowStartupLocation="CenterOwner"
+        Icon="../Resources/Icons/16/LinguaSpace.png"
+        SizeToContent="Manual"
+        ResizeMode="CanResizeWithGrip"
+        ShowInTaskbar="False"
+        FocusManager.FocusedElement="{Binding ElementName=textTranslation}"
+        x:Name="window"
+        Height="400"
+        Width="600"
+        MinHeight="350"
+        MinWidth="400">
+	<Window.CommandBindings>
+		<CommandBinding Command="{x:Static ComponentCommands.MoveFocusDown}" Executed="Execute_GoToListBox"/>
+	</Window.CommandBindings>
+
+	<Window.Resources>
+
+        <this:WidthRatioDispenser x:Key="WidthRatioDispenser"/>
+        
+        <DataTemplate x:Key="TranslationCell">
+            <TextBlock Margin="-6 0 0 0" Text="{Binding Path=Translation}" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="WordCell">
+            <TextBlock Margin="-6 0 0 0" Text="{Binding Path=Word}" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Gray"/>
+        </DataTemplate>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10" Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+			<Label Content="Translation:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top"/>
+			<TextBlock Grid.Row="0" Grid.Column="1" TextTrimming="CharacterEllipsis" Text="{Binding Path=WordText, Mode=OneWay}" FontWeight="Bold" Margin="10" FontFamily="Verdana" FontSize="13"/>
+			<TextBlock Grid.Row="0" Grid.Column="2" TextTrimming="CharacterEllipsis" Text="{Binding Path=TranslationsText, Mode=OneWay}" Margin="10" FontFamily="Verdana" FontSize="13"/>
+			
+            <Label Content="_Filter:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=textTranslation}"/>
+            <TextBox x:Name="textTranslation"
+               Grid.Row="1" Grid.Column="2"
+               Text="{Binding Path=FilterTranslationText, UpdateSourceTrigger=PropertyChanged}">
+				<TextBox.InputBindings>
+				  <KeyBinding Key="Down" Command="{x:Static ComponentCommands.MoveFocusDown}"/>
+				</TextBox.InputBindings>
+            </TextBox>
+
+			<Label Content="_Translations:" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=listTranslations}" VerticalAlignment="Top"/>
+            <ListView x:Name="listTranslations"
+                      BorderThickness="1"
+                      Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                      ItemsSource="{Binding Path=Translations}"
+                      IsSynchronizedWithCurrentItem="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Word" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=ActualWidth, Converter={StaticResource WidthRatioDispenser}, ConverterParameter=0.5}" CellTemplate="{StaticResource WordCell}"/>
+                        <GridViewColumn Header="Translation" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=ActualWidth, Converter={StaticResource WidthRatioDispenser}, ConverterParameter=0.5}" CellTemplate="{StaticResource TranslationCell}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+        <ui:StatusCtrl x:Name="status" Grid.Row="1" Grid.Column="0"/>
+    </Grid>
+</Window>

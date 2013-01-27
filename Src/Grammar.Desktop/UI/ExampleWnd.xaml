@@ -1,0 +1,67 @@
+﻿<Window x:Class="LinguaSpace.Grammar.UI.ExampleWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    Style="{StaticResource TitleWindow}"
+    WindowStartupLocation="CenterOwner"
+    SizeToContent="Manual"
+    ResizeMode="CanResizeWithGrip"
+    FocusManager.FocusedElement="{Binding ElementName=native}"
+    Icon="../Resources/Icons/grammar.ico"
+    ShowInTaskbar="False"
+    MinHeight="200" 
+    MinWidth="500"
+    Height="300"
+    Width="700">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" Grid.Column="0" Margin="10">
+			<Grid.Resources>
+				<Style TargetType="Label">
+					<Setter Property="Margin" Value="5, 5, 5, -10"/>
+				</Style>
+				<Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+					<Setter Property="Margin" Value="10 5 5 5"/>
+					<Setter Property="VerticalAlignment" Value="Center"/>
+					<Setter Property="HorizontalAlignment" Value="Left"/>
+				</Style>
+			</Grid.Resources>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Label Content="_Translation:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=native}"/>
+			<Label Content="_Example:" Grid.Row="0" Grid.Column="1" Target="{Binding ElementName=target}"/>
+			<TextBox Grid.Row="1" Grid.Column="0" x:Name="native" 
+					 Text="{Binding Path=NativeText, UpdateSourceTrigger=PropertyChanged}"
+					 AcceptsReturn="True"
+					 TextWrapping="WrapWithOverflow"
+					 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+					 ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="target" 
+                     Text="{Binding Path=TargetText, UpdateSourceTrigger=PropertyChanged}" 
+                     AcceptsReturn="True"
+                     TextWrapping="WrapWithOverflow"
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <TextBox.CommandBindings>
+                    <CommandBinding CanExecute="OnCanHighlight" Executed="OnHighlight" Command="{x:Static ui:EditCommands.Highlight}"/>
+                </TextBox.CommandBindings>
+            </TextBox>
+                <CheckBox IsChecked="{Binding Path=Active, UpdateSourceTrigger=PropertyChanged}" Content="_Active " Grid.Row="2" Grid.Column="0"/>
+			<CheckBox IsChecked="{Binding Path=Exception, UpdateSourceTrigger=PropertyChanged}" Content="E_xception " Grid.Row="2" Grid.Column="1"/>
+		</Grid>
+		<ui:StatusCtrl Grid.Row="1" Grid.Column="1" x:Name="status"/>
+	</Grid>
+</Window>

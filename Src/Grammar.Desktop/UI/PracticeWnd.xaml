@@ -1,0 +1,105 @@
+﻿<Window x:Class="LinguaSpace.Grammar.UI.PracticeWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    xmlns:gr="clr-namespace:LinguaSpace.Grammar.UI"
+    Style="{StaticResource TitleWindow}"
+    WindowStartupLocation="CenterOwner"
+    SizeToContent="Manual"
+    ResizeMode="CanResizeWithGrip"
+    SnapsToDevicePixels="True"
+    FocusManager.FocusedElement="{Binding ElementName=_answer}"
+    Icon="../Resources/Icons/grammar.ico"
+    ShowInTaskbar="False"
+    MinHeight="350"
+    MinWidth="500"
+    Height="500"
+    Width="900">
+	<Window.Resources>
+		<ui:ExampleConverter x:Key="ExampleConverter"/>	
+	</Window.Resources>
+	<Window.CommandBindings>
+		<CommandBinding Command="{x:Static ui:FlashCardsCommands.Next}" CanExecute="OnCanNext" Executed="OnNext"/>
+		<CommandBinding Command="{x:Static ui:FlashCardsCommands.Answer}" CanExecute="OnCanAnswer" Executed="OnAnswer"/>
+		<CommandBinding Command="{x:Static ui:FlashCardsCommands.Stop}" CanExecute="OnCanStop" Executed="OnStop"/>
+		<CommandBinding Command="{x:Static ui:FlashCardsCommands.Skip}" CanExecute="OnCanSkip" Executed="OnSkip"/>
+	</Window.CommandBindings>
+	<Window.InputBindings>
+		<KeyBinding Command="{x:Static ui:FlashCardsCommands.Skip}" Gesture="PageDown"/>
+	</Window.InputBindings>
+	<Grid Margin="5">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100*"/>
+			<ColumnDefinition Width="102*"/>
+			<ColumnDefinition Width="100*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.Resources>
+			<Style TargetType="Label">
+				<Setter Property="Margin" Value="5, 5, 5, -10"/>
+			</Style>
+		</Grid.Resources>
+		<TextBlock FontSize="20" Margin="10" Text="{Binding Path=TitleText}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold" TextTrimming="CharacterEllipsis"/>
+		
+		<FlowDocumentScrollViewer VerticalScrollBarVisibility="Hidden"
+								Margin="7 0 7 7"
+                                x:Name="_ruleViewer"
+								Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+								Document="{Binding Path=RuleText, Converter={StaticResource ExampleConverter}}"
+                                SnapsToDevicePixels="True"
+								IsEnabled="False">
+        </FlowDocumentScrollViewer>
+		
+		<Label Content="{Binding Path=NativeCaption}" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=_native}"/>
+		<Label Content="{Binding Path=TargetCaption}" Grid.Row="2" Grid.Column="1" Target="{Binding ElementName=_target}"/>
+		<Label Content="Your _answer:" Grid.Row="2" Grid.Column="2" Target="{Binding ElementName=_answer}"/>
+
+		<TextBox Grid.Row="3" Grid.Column="0" x:Name="_native"
+					 Text="{Binding Path=NativeText, Mode=OneWay}"
+					 TextWrapping="WrapWithOverflow"
+					 Focusable="False"
+					 BorderThickness="1"
+                     SnapsToDevicePixels="True"
+                     RenderTransformOrigin="0.5, 0.5"
+					 ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        </TextBox>
+
+		<Border Grid.Row="3" CornerRadius="1" Grid.Column="1" BorderBrush="{x:Static SystemColors.ControlDarkBrush}" BorderThickness="1" Margin="12" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Unspecified">
+			<FlowDocumentScrollViewer
+						  Margin="0 -3 0 0"
+						  Focusable="False"
+						  x:Name="_target"
+						  ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          SnapsToDevicePixels="True"
+						  Document="{Binding Path=TargetText, Converter={StaticResource ExampleConverter}}"
+						  IsEnabled="True"/>
+		</Border>
+					  
+		<TextBox Grid.Row="3" Grid.Column="2" x:Name="_answer"
+					 Text="{Binding Path=TargetTextAnswer, UpdateSourceTrigger=PropertyChanged}"
+					 TextWrapping="WrapWithOverflow"
+                     IsReadOnly="{Binding Path=IsAnswerReadOnly}"
+					 ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+			<TextBox.InputBindings>
+				<KeyBinding Command="{x:Static ui:FlashCardsCommands.Skip}" Gesture="PageDown"/>
+			</TextBox.InputBindings>
+		</TextBox>
+					 
+		<TextBlock Margin="10 -8 10 0" Text="{Binding Path=ExampleHint}" Foreground="{Binding Path=ExampleHintBrush}" Grid.Row="4" Grid.Column="2"/>						 
+		<DockPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+			<Button DockPanel.Dock="Right" Command="{x:Static ui:FlashCardsCommands.Stop}" Content="Stop" IsCancel="True"/>
+			<Button DockPanel.Dock="Right" Command="{x:Static ui:FlashCardsCommands.Next}" Content="Next" IsDefault="True"/>
+			<Button DockPanel.Dock="Right" Command="{x:Static ui:FlashCardsCommands.Answer}" Content="Answer" IsDefault="True"/>
+			<Button DockPanel.Dock="Right" Command="{x:Static ui:FlashCardsCommands.Skip}" Content="Skip"/>
+			<Image Margin="10" DockPanel.Dock="Left" Source="{Binding Path=StatusImage}" Width="32" Height="32"/>
+			<TextBlock Margin="10" Text="{Binding Path=StatusText}" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
+		</DockPanel>
+	</Grid>
+</Window>

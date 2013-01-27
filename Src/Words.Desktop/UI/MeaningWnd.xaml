@@ -1,0 +1,304 @@
+﻿<Window x:Class="LinguaSpace.Words.UI.MeaningWnd"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+		xmlns:this="clr-namespace:LinguaSpace.Words.UI"
+		Style="{StaticResource TitleWindow}"
+		Width="600"
+		Height="600"
+		ResizeMode="CanResizeWithGrip"
+		WindowStartupLocation="CenterOwner"
+		SizeToContent="Manual"
+		Icon="../Resources/Icons/16/LinguaSpace.png"
+		FocusManager.FocusedElement="{Binding ElementName=textPrefix}"
+		ShowInTaskbar="False">
+	<Window.Resources>
+
+		<Style TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
+			<Setter Property="FontWeight" Value="Normal"/>
+			<Setter Property="ToolTip" Value="Right click to edit..."/>
+		</Style>
+
+		<Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+			<Setter Property="DockPanel.Dock" Value="Top"/>
+			<Setter Property="Margin" Value="10 10 10 -7"/>
+		</Style>
+
+		<Style TargetType="CheckBox"/>
+
+		<!--
+		<Style TargetType="{x:Type this:CheckListBox}" BasedOn="{StaticResource {x:Type ListBox}}"/>
+		
+		<DataTemplate x:Key="CategoryItemTemplate">
+			<CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"
+				      Content="{Binding Path=Category}"
+				      Focusable="False"/>
+		</DataTemplate>
+
+		<Style x:Key="CategoryItemStyle" TargetType="ListBoxItem">
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+			<Setter Property="FontWeight" Value="Normal"/>
+			<Setter Property="Focusable" Value="True"/>
+			<Setter Property="Background" Value="{x:Static SystemColors.WindowBrush}"/>
+			<Setter Property="Padding" Value="3"/>
+		</Style>
+		-->
+
+		<ContextMenu x:Key="ContextMenu">
+			<ContextMenu.Resources>
+				<Style TargetType="Image" BasedOn="{StaticResource MenuImage}"/>
+				<Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource MenuImage}"/>
+			</ContextMenu.Resources>
+			<MenuItem Command="{x:Static ui:EditCommands.New}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/New.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Command="{x:Static ui:EditCommands.Edit}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Command="{x:Static ui:EditCommands.Delete}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<Separator/>
+			<MenuItem Command="{x:Static ui:EditCommands.MoveUp}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/MoveUp.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Command="{x:Static ui:EditCommands.MoveDown}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/MoveDown.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+		</ContextMenu>
+
+	</Window.Resources>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		
+		<!--
+		<ToolBar Grid.Row="0" Grid.Column="0">
+				<ToolBar.Resources>
+					<Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource MenuImage}"/>
+					<Style TargetType="StackPanel">
+						<Setter Property="Orientation" Value="Horizontal"/>
+					</Style>
+				</ToolBar.Resources>
+				<Button Command="{x:Static this:EditCommands.New}" Grid.Row="0" Grid.Column="0">
+					<StackPanel>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/New.png"/>
+						<TextBlock Text=" New..."/>
+			    </StackPanel>
+				</Button>
+				<Button Command="{x:Static this:EditCommands.Edit}" Grid.Row="0" Grid.Column="1">
+					<StackPanel>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.png"/>
+						<TextBlock Text=" Edit..."/>
+				</StackPanel>
+				</Button>
+				<Button Command="{x:Static this:EditCommands.Delete}" Grid.Row="0" Grid.Column="2">
+					<StackPanel>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.png"/>
+						<TextBlock Text=" Delete"/>
+				</StackPanel>
+				</Button>
+				<Separator/>
+				<Button Command="{x:Static this:EditCommands.MoveUp}" Grid.Row="0" Grid.Column="3">
+					<StackPanel>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/MoveUp.png"/>
+						<TextBlock Text=" Move Up"/>
+				</StackPanel>
+				</Button>
+				<Button Command="{x:Static this:EditCommands.MoveDown}" Grid.Row="0" Grid.Column="4">
+					<StackPanel>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/MoveDown.png"/>
+						<TextBlock Text=" Move Down"/>
+				</StackPanel>
+				</Button>
+				<Separator/>
+				<Button Command="{x:Static this:EditCommands.Highlight}" Grid.Row="0" Grid.Column="5">
+					<StackPanel>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Highlight.png"/>
+						<TextBlock Text=" Highlight"/>
+				</StackPanel>
+				</Button>
+		</ToolBar>
+		-->
+
+		<Grid Grid.Row="1" Grid.Column="0" Margin="10">
+			<Grid.Resources>
+
+				<Style TargetType="DockPanel">
+					<Style.Triggers>
+						<Trigger Property="IsKeyboardFocusWithin" Value="True">
+							<Setter Property="Label.FontWeight" Value="Bold"/>
+						</Trigger>
+					</Style.Triggers>
+				</Style>
+
+				<Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+					<Setter Property="FontWeight" Value="Normal"/>
+					<Setter Property="AcceptsReturn" Value="True"/>
+					<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+					<Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
+				</Style>
+
+				<Style TargetType="RichTextBox" BasedOn="{StaticResource {x:Type RichTextBox}}">
+					<Setter Property="FontWeight" Value="Normal"/>
+				</Style>
+
+			</Grid.Resources>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="5*"/>
+				<RowDefinition Height="4*"/>
+				<RowDefinition Height="4*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<DockPanel LastChildFill="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+				<DockPanel.Resources>
+					<Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+						<Setter Property="AcceptsReturn" Value="False"/>
+						<Setter Property="TextWrapping" Value="NoWrap"/>
+						<Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+						<Setter Property="Margin" Value="10 10 0 10"/>
+						<Setter Property="FontWeight" Value="Bold"/>
+					</Style>
+				</DockPanel.Resources>
+				<Label Content="_Usage:" Name="labelUsage" Target="{Binding ElementName=textPrefix}" DockPanel.Dock="Top"/>
+				<StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+					<StackPanel Orientation="Horizontal">
+						<TextBox Text="{Binding Path=Prefix, UpdateSourceTrigger=PropertyChanged}" MinWidth="40" Name="textPrefix"/>
+						<TextBox Text="{Binding Path=Word, Mode=OneWay}" IsReadOnly="True" Focusable="False" Name="textWord"/>
+						<TextBox Text="{Binding Path=Postfix, UpdateSourceTrigger=PropertyChanged}" MinWidth="60"/>
+					</StackPanel>
+				</StackPanel>
+				<TextBlock TextWrapping="Wrap" FontWeight="Normal" Margin="30 10 10 10" FontSize="11" Foreground="{x:Static SystemColors.ControlDarkBrush}">
+					<TextBlock.Text>Note: prefix and postfix can be used for reflexive verb particle, prepositions etc.</TextBlock.Text>
+				</TextBlock>
+			</DockPanel>
+
+			<DockPanel Grid.Row="1" Grid.Column="0">
+				<Label Content="_Translations:" Name="labelTranslations" Target="{Binding ElementName=listTranslations}"/>
+				<ListBox Name="listTranslations" 
+						 ItemsSource="{Binding Path=Translations}"
+						 DisplayMemberPath="Translation"
+						 ContextMenu="{StaticResource ContextMenu}">
+					<ListBox.CommandBindings>
+						<CommandBinding Command="{x:Static ui:EditCommands.New}"
+                            CanExecute="OnCanNew"
+                            Executed="OnNewTranslation"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.Edit}"
+                            CanExecute="OnCanEdit"
+                            Executed="OnEditTranslation"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.Delete}"
+                            CanExecute="OnCanDelete"
+                            Executed="OnDelete"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.MoveUp}"
+                            CanExecute="OnTranslationCanMoveUp"
+                            Executed="OnTranslationMoveUp"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.MoveDown}"
+                            CanExecute="OnTranslationCanMoveDown"
+                            Executed="OnTranslationMoveDown"/>
+					</ListBox.CommandBindings>
+				</ListBox>
+			</DockPanel>
+			<DockPanel Grid.Row="1" Grid.Column="1">
+				<Label Content="_Synonyms:" Target="{Binding ElementName=listSynonyms}"/>
+				<ListBox Name="listSynonyms" 
+						 ItemsSource="{Binding Path=Synonyms}"
+						 DisplayMemberPath="Word"
+						 ContextMenu="{StaticResource ContextMenu}">
+					<ListBox.CommandBindings>
+						<CommandBinding Command="{x:Static ui:EditCommands.New}"
+                            CanExecute="OnCanNew"
+                            Executed="OnNewWord"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.Edit}"
+                            CanExecute="OnCanEdit"
+                            Executed="OnEditWord"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.Delete}"
+                            CanExecute="OnCanDelete"
+                            Executed="OnDelete"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.MoveUp}"
+                            CanExecute="OnWordCanMoveUp"
+                            Executed="OnWordMoveUp"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.MoveDown}"
+                            CanExecute="OnWordCanMoveDown"
+                            Executed="OnWordMoveDown"/>
+					</ListBox.CommandBindings>
+				</ListBox>
+			</DockPanel>
+			<DockPanel Grid.Row="1" Grid.Column="2">
+				<Label Content="_Antonyms:" Target="{Binding ElementName=listAntonyms}"/>
+				<ListBox Name="listAntonyms" 
+						 ItemsSource="{Binding Path=Antonyms}"
+						 DisplayMemberPath="Word"
+						 ContextMenu="{StaticResource ContextMenu}">
+					<ListBox.CommandBindings>
+						<CommandBinding Command="{x:Static ui:EditCommands.New}"
+                            CanExecute="OnCanNew"
+                            Executed="OnNewWord"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.Edit}"
+                            CanExecute="OnCanEdit"
+                            Executed="OnEditWord"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.Delete}"
+                            CanExecute="OnCanDelete"
+                            Executed="OnDelete"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.MoveUp}"
+                            CanExecute="OnWordCanMoveUp"
+                            Executed="OnWordMoveUp"/>
+						<CommandBinding Command="{x:Static ui:EditCommands.MoveDown}"
+                            CanExecute="OnWordCanMoveDown"
+                            Executed="OnWordMoveDown"/>
+					</ListBox.CommandBindings>
+				</ListBox>
+			</DockPanel>
+			<DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+				<Label Content="_Definition:" Target="{Binding ElementName=textDefinition}"/>
+				<TextBox Name="textDefinition" Text="{Binding Path=Definition, UpdateSourceTrigger=PropertyChanged}"/>
+			</DockPanel>
+			<DockPanel  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+				<Label Content="_Example:" Target="{Binding ElementName=textExample}"/>
+				<ui:ExampleCtrl x:Name="textExample" Text="{Binding Path=Example}" Margin="10 10 10 10"/>
+			</DockPanel>
+			<!--
+			<DockPanel Grid.Row="1" Grid.Column="3" Grid.RowSpan="3">
+				<Label Content="_Categories:" Target="{Binding ElementName=listCategories}"/>
+				<this:CheckListBox x:Name="listCategories"
+							     BorderThickness="1"
+							     SelectionMode="Multiple"
+							     ItemTemplate="{StaticResource CategoryItemTemplate}"
+							     ItemContainerStyle="{StaticResource CategoryItemStyle}"
+							     ItemsSource="{Binding Path=DataView.Table.DataSet.Categories}"
+							     BorderBrush="{x:Static SystemColors.ControlDarkBrush}">
+					<ListBox.Resources>
+						<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{x:Static SystemColors.WindowColor}"/>
+						<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"  Color="{x:Static SystemColors.WindowTextColor}"/>
+						<SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="{x:Static SystemColors.WindowColor}"/>
+					</ListBox.Resources>
+				</this:CheckListBox>
+			</DockPanel>
+			-->
+		</Grid>
+		<ui:StatusCtrl Grid.Row="2" Grid.Column="0" x:Name="status"/>
+	</Grid>
+</Window>

@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACTION" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ACTIONS" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ACTION_ID" xml:space="preserve">
+    <value>ActionId</value>
+  </data>
+  <data name="ACTION_ID_MOD" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="ACTION_ID_PROMPT" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="ACTION_ID_RIGHT" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="ACTION_ID_WRONG" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="ACTION_MOD" xml:space="preserve">
+    <value>Modification</value>
+  </data>
+  <data name="ACTION_PROMPT" xml:space="preserve">
+    <value>No Answer</value>
+  </data>
+  <data name="ACTION_RIGHT" xml:space="preserve">
+    <value>Right Answer</value>
+  </data>
+  <data name="ACTION_WRONG" xml:space="preserve">
+    <value>Wrong Answer</value>
+  </data>
+  <data name="ANSWER" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="ANSWER_DATE" xml:space="preserve">
+    <value>AnswerDate</value>
+  </data>
+  <data name="ANTONYMS" xml:space="preserve">
+    <value>Antonyms</value>
+  </data>
+  <data name="BEEP" xml:space="preserve">
+    <value>Beep</value>
+  </data>
+  <data name="CATEGORIES" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="CATEGORY_ID" xml:space="preserve">
+    <value>CategoryId</value>
+  </data>
+  <data name="DATE" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DEFAULT_VOCABULARY_PATH" xml:space="preserve">
+    <value>DefaultVocabularyPath</value>
+  </data>
+  <data name="DEFINITION" xml:space="preserve">
+    <value>Definition</value>
+  </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EXAMPLE" xml:space="preserve">
+    <value>Example</value>
+  </data>
+  <data name="FK_ANTONYMS_MEANINGS" xml:space="preserve">
+    <value>FkAntonymsMeanings</value>
+  </data>
+  <data name="FK_ANTONYMS_WORDS" xml:space="preserve">
+    <value>FkAntonymsWords</value>
+  </data>
+  <data name="FK_CATEGORIES_MEANINGS" xml:space="preserve">
+    <value>FkCategoriesMeanings</value>
+  </data>
+  <data name="FK_HISTORY_ACTIONS" xml:space="preserve">
+    <value>FkHistoryActions</value>
+  </data>
+  <data name="FK_HISTORY_MEANINGS" xml:space="preserve">
+    <value>FkHistoryMeanings</value>
+  </data>
+  <data name="FK_HISTORY_VOCABULARIES" xml:space="preserve">
+    <value>FkHistoryVocabularies</value>
+  </data>
+  <data name="FK_MEANINGS_CATEGORIES" xml:space="preserve">
+    <value>FkMeaningsCategories</value>
+  </data>
+  <data name="FK_MEANINGS_WORDS" xml:space="preserve">
+    <value>FkMeaningsWords</value>
+  </data>
+  <data name="FK_RELATIONS_MEANINGS" xml:space="preserve">
+    <value>FkRelationsMeanings</value>
+  </data>
+  <data name="FK_RELATIONS_WORDS" xml:space="preserve">
+    <value>FkRelationsWords</value>
+  </data>
+  <data name="FK_SYNONYMS_MEANINGS" xml:space="preserve">
+    <value>FkSynonymsMeanings</value>
+  </data>
+  <data name="FK_SYNONYMS_WORDS" xml:space="preserve">
+    <value>FkSynonymsWords</value>
+  </data>
+  <data name="FK_TRANSLATIONS_MEANINGS" xml:space="preserve">
+    <value>FkTranslationsMeanings</value>
+  </data>
+  <data name="FK_WORDS_TYPES" xml:space="preserve">
+    <value>FkWordsTypes</value>
+  </data>
+  <data name="HISTORY" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="HISTORY_ID" xml:space="preserve">
+    <value>HistoryId</value>
+  </data>
+  <data name="INITIAL_WEIGHT" xml:space="preserve">
+    <value>InitialWeight</value>
+  </data>
+  <data name="MEANINGS" xml:space="preserve">
+    <value>Meanings</value>
+  </data>
+  <data name="MEANINGS_CATEGORIES" xml:space="preserve">
+    <value>MeaningsCategories</value>
+  </data>
+  <data name="MEANING_CATEGORY_ID" xml:space="preserve">
+    <value>MeaningCategoryId</value>
+  </data>
+  <data name="MEANING_ID" xml:space="preserve">
+    <value>MeaningId</value>
+  </data>
+  <data name="META_PROFILE" xml:space="preserve">
+    <value>LinguaSpace.Words.Profile</value>
+  </data>
+  <data name="META_VOCABULARY" xml:space="preserve">
+    <value>LinguaSpace.Words.Vocabulary</value>
+  </data>
+  <data name="MODIFIED" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NATIVE_LANG" xml:space="preserve">
+    <value>NativeLang</value>
+  </data>
+  <data name="PASSWORD_PROFILE" xml:space="preserve">
+    <value>{4AEA9869-B312-4177-BDBB-3088F0410C5D}</value>
+  </data>
+  <data name="PASSWORD_VOCABULARY" xml:space="preserve">
+    <value>{F87B1C75-0486-4cec-ACBC-7B158DD75B4B}</value>
+  </data>
+  <data name="PAYPAL" xml:space="preserve">
+    <value>https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=sales%40linguaspace%2ecom&amp;item_name={0}&amp;item_number={1}&amp;amount=10%2e00&amp;no_shipping=2&amp;no_note=1&amp;currency_code=USD&amp;lc=US&amp;bn=PP%2dBuyNowBF&amp;charset=UTF%2d8</value>
+  </data>
+  <data name="PK_ACTIONS" xml:space="preserve">
+    <value>PkActions</value>
+  </data>
+  <data name="PK_CATEGORIES" xml:space="preserve">
+    <value>PkCategories</value>
+  </data>
+  <data name="PK_HISTORY" xml:space="preserve">
+    <value>PkHistory</value>
+  </data>
+  <data name="PK_MEANINGS" xml:space="preserve">
+    <value>PkMeanings</value>
+  </data>
+  <data name="PK_MEANINGS_CATEGORIES" xml:space="preserve">
+    <value>PkMeaningsCategories</value>
+  </data>
+  <data name="PK_PROFILES" xml:space="preserve">
+    <value>PkProfiles</value>
+  </data>
+  <data name="PK_RELATIONS" xml:space="preserve">
+    <value>PkRelations</value>
+  </data>
+  <data name="PK_TRANSLATIONS" xml:space="preserve">
+    <value>PkTranslations</value>
+  </data>
+  <data name="PK_TYPES" xml:space="preserve">
+    <value>PkTypes</value>
+  </data>
+  <data name="PK_VOCABULARIES" xml:space="preserve">
+    <value>PkVocabularies</value>
+  </data>
+  <data name="PK_WORDS" xml:space="preserve">
+    <value>PkWords</value>
+  </data>
+  <data name="POSITION" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="POSTFIX" xml:space="preserve">
+    <value>Postfix</value>
+  </data>
+  <data name="PREFIX" xml:space="preserve">
+    <value>Prefix</value>
+  </data>
+  <data name="PROFILES" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="PROFILE_ID" xml:space="preserve">
+    <value>ProfileId</value>
+  </data>
+  <data name="PROMPT_WEIGHT" xml:space="preserve">
+    <value>PromptWeight</value>
+  </data>
+  <data name="RELATION" xml:space="preserve">
+    <value>Relation</value>
+  </data>
+  <data name="RELATIONS" xml:space="preserve">
+    <value>Relations</value>
+  </data>
+  <data name="RELATION_ID" xml:space="preserve">
+    <value>RelationId</value>
+  </data>
+  <data name="RIGHT_WEIGHT" xml:space="preserve">
+    <value>RightWeight</value>
+  </data>
+  <data name="SCHEMA_PROFILE" xml:space="preserve">
+    <value>LinguaSpace.Words.Resources.Schema.Profile.sql</value>
+  </data>
+  <data name="SCHEMA_VOCABULARY" xml:space="preserve">
+    <value>LinguaSpace.Words.Resources.Schema.Vocabulary.sql</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>Sleep</value>
+  </data>
+  <data name="SYNC_LIVE" xml:space="preserve">
+    <value>SyncLive</value>
+  </data>
+  <data name="SYNC_MOD" xml:space="preserve">
+    <value>SyncMod</value>
+  </data>
+  <data name="SYNONYMS" xml:space="preserve">
+    <value>Synonyms</value>
+  </data>
+  <data name="SYNONYM_ID" xml:space="preserve">
+    <value>SynonymId</value>
+  </data>
+  <data name="TARGET_LANG" xml:space="preserve">
+    <value>TargetLang</value>
+  </data>
+  <data name="TEXT" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="TRANSLATION" xml:space="preserve">
+    <value>Translation</value>
+  </data>
+  <data name="TRANSLATIONS" xml:space="preserve">
+    <value>Translations</value>
+  </data>
+  <data name="TRANSLATION_ID" xml:space="preserve">
+    <value>TranslationId</value>
+  </data>
+  <data name="TYPE" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="TYPES" xml:space="preserve">
+    <value>Types</value>
+  </data>
+  <data name="TYPE_ID" xml:space="preserve">
+    <value>TypeId</value>
+  </data>
+  <data name="VOCABULARIES" xml:space="preserve">
+    <value>Vocabularies</value>
+  </data>
+  <data name="VOCABULARY_ID" xml:space="preserve">
+    <value>VocabularyId</value>
+  </data>
+  <data name="WEIGHT" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="WORD" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>Words</value>
+  </data>
+  <data name="WORD_ID" xml:space="preserve">
+    <value>WordId</value>
+  </data>
+  <data name="WRONG_WEIGHT" xml:space="preserve">
+    <value>WrongWeight</value>
+  </data>
+</root>

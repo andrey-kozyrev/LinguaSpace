@@ -1,0 +1,43 @@
+﻿<Window x:Class="LinguaSpace.Grammar.UI.TopicWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    Style="{StaticResource TitleWindow}"
+    WindowStartupLocation="CenterOwner"
+    SizeToContent="WidthAndHeight"
+    ResizeMode="CanResizeWithGrip"
+    FocusManager.FocusedElement="{Binding ElementName=title}"
+    Icon="../Resources/Icons/grammar.ico"
+    ShowInTaskbar="False"
+    MinHeight="100" 
+    MinWidth="350"
+    Height="350"
+    Width="350">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" Grid.Column="0" Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.Resources>
+				<Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+					<Setter Property="VerticalAlignment" Value="Top"/>
+					<Setter Property="Margin" Value="10 13 5 10"/>
+				</Style>
+			</Grid.Resources>
+			<Label Content="_Title:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=title}"/>
+			<TextBox Text="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Grid.Row="0" Grid.Column="1" x:Name="title" FontWeight="Bold"/>
+		</Grid>
+		<cui:StatusCtrl Grid.Row="1" Grid.Column="1" x:Name="status"/>
+	</Grid>
+</Window>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="LinguaSpace.Words.UI.WordWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:this="clr-namespace:LinguaSpace.Words.UI"
+	xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    Style="{StaticResource TitleWindow}"
+	SizeToContent="WidthAndHeight"
+    ResizeMode="NoResize"
+	MinWidth="350"
+	x:Name="window"
+	WindowStartupLocation="CenterOwner"
+    Icon="../Resources/Icons/16/LinguaSpace.png"
+	FocusManager.FocusedElement="{Binding ElementName=textPrefix}"
+    ShowInTaskbar="False">
+	<StackPanel>
+    <Grid Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			
+			<Label Content="_Word:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=textPrefix}"/>
+      <TextBox Grid.Row="0"
+					 Grid.Column="1"
+           x:Name="textPrefix"
+					 Text="{Binding Path=Prefix, UpdateSourceTrigger=PropertyChanged}"/>
+      <TextBox Grid.Row="0" 
+					 Grid.Column="2"
+           x:Name="textData"
+					 Text="{Binding Path=Word, UpdateSourceTrigger=PropertyChanged}"/>
+			<Label Content="_Type:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=comboType}"/>
+			<ComboBox Grid.Row="1" 
+					  Grid.Column="1" 
+					  Grid.ColumnSpan="2"
+					  IsReadOnly="True"
+					  x:Name="comboType"
+					  ItemsSource="{Binding Path=Types}"
+					  DisplayMemberPath="Type" 
+					  SelectedValuePath="TypeId"
+					  SelectedValue="{Binding Path=TypeId}"/>
+		</Grid>
+    <ui:StatusCtrl x:Name="status"/>
+	</StackPanel>
+</Window>

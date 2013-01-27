@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{96AB09D1-E38E-494C-BA09-6852FFDFF71D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>lscd</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LinguaSpace.Common</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\..\Bin\Desktop\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;DEBUG;PLATFORM_DESKTOP</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>0659</NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\Bin\Desktop\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;PLATFORM_DESKTOP</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>0659</NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComponentModel\BindingListUtils.cs" />
+    <Compile Include="ComponentModel\PresentationUtils.cs" />
+    <Compile Include="ComponentModel\Serialization.cs" />
+    <Compile Include="Data\AdoUtils.cs" />
+    <Compile Include="Data\DataSet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\DataUtils.cs" />
+    <Compile Include="ComponentModel\FilterBindingList.cs" />
+    <Compile Include="Data\PresentationModel.cs" />
+    <Compile Include="Data\Rows.cs" />
+    <Compile Include="Data\Tables.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\Validation.cs" />
+    <Compile Include="Data\Views.cs" />
+    <Compile Include="Licensing\CryptographyParams.cs" />
+    <Compile Include="Licensing\Device.cs" />
+    <Compile Include="Licensing\Hardware.cs" />
+    <Compile Include="Licensing\IRegistration.cs" />
+    <Compile Include="Licensing\ITrial.cs" />
+    <Compile Include="Licensing\LicensingException.cs" />
+    <Compile Include="Licensing\OS.cs" />
+    <Compile Include="Licensing\Registration.cs" />
+    <Compile Include="Licensing\RegistrationService.cs" />
+    <Compile Include="Licensing\TrialCounter.cs" />
+    <Compile Include="Licensing\WMIFingerprintBase.cs" />
+    <Compile Include="UI\ClipboardUtils.cs" />
+    <Compile Include="UI\Commands.cs" />
+    <Compile Include="UI\DragDropUtils.cs" />
+    <Compile Include="UI\ExampleCtrl.xaml.cs">
+      <DependentUpon>ExampleCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FlowDocumentUtils.cs" />
+    <Compile Include="UI\GreyImage.cs">
+    </Compile>
+    <Compile Include="Collections\ListUtils.cs" />
+    <Compile Include="ComponentModel\PresentationModel.cs" />
+    <Compile Include="ComponentModel\Progress.cs" />
+    <Compile Include="Properties\AssemblyInfo.Desktop.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Collections\AutoDictionary.cs" />
+    <Compile Include="IO\FileUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentModel\NotifyPropertyChanged.cs" />
+    <Compile Include="Resources\CommonStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Text\StringBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Text\Strings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Text\StringUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Diagnostics\Tracer.cs" />
+    <Compile Include="Data\Transactions.cs" />
+    <Compile Include="ComponentModel\Validation.cs" />
+    <Compile Include="Events\WeakEventHandler.cs" />
+    <Compile Include="Events\WeakEventManager.cs" />
+    <Compile Include="IO\XBinaryReader.cs" />
+    <Compile Include="IO\XBinaryWriter.cs" />
+    <Compile Include="UI\ListBoxHistory.cs" />
+    <Compile Include="UI\ShellUtils.cs" />
+    <Compile Include="UI\StatusCtrl.xaml.cs">
+      <DependentUpon>StatusCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ValueConverters.cs" />
+    <Compile Include="UI\Win32.cs" />
+    <Compile Include="UI\Win32Window.cs" />
+    <Compile Include="UI\WindowClosingGuard.cs" />
+    <Compile Include="UI\WindowPlacement.cs" />
+    <Compile Include="UI\WPFUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CommonStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonStrings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UI\ExampleCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\StatusCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sync\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

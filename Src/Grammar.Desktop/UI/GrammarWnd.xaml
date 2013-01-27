@@ -1,0 +1,65 @@
+﻿<Window x:Class="LinguaSpace.Grammar.UI.GrammarWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    Style="{StaticResource TitleWindow}"
+    WindowStartupLocation="CenterOwner"
+    SizeToContent="Manual"
+    ResizeMode="CanResizeWithGrip"
+    FocusManager.FocusedElement="{Binding ElementName=title}"
+    Icon="../Resources/Icons/grammar.ico"
+    ShowInTaskbar="False"
+    MinHeight="400" 
+    MinWidth="400"
+    Height="400"
+    Width="500">
+    <Window.Resources>
+        <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10 5 5 5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" Grid.Column="0" Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.Resources>
+				<Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+					<Setter Property="VerticalAlignment" Value="Top"/>
+					<Setter Property="Margin" Value="10 13 5 10"/>
+				</Style>
+			</Grid.Resources>
+			<Label Content="_Title:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=title}"/>
+			<TextBox Text="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" x:Name="title"/>
+			<Label Content="_Comment:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=comment}"/>
+			<TextBox Text="{Binding Path=Comment}" Grid.Row="1" Grid.Column="1" x:Name="comment"/>
+			<Label Grid.Row="2" Grid.Column="0" Content="_Target:" Target="{Binding ElementName=target}"/>
+			<ComboBox  Grid.Row="2" Grid.Column="1" Name="target" ItemsSource="{Binding Source={x:Static InputLanguageManager.Current}, Path=AvailableInputLanguages}" SelectedItem="{Binding Path=TargetLang}"/>
+			<Label Grid.Row="3" Grid.Column="0" Content="_Native:" Target="{Binding ElementName=native}"/>
+			<ComboBox  Grid.Row="3" Grid.Column="1" Name="native" ItemsSource="{Binding Source={x:Static InputLanguageManager.Current}, Path=AvailableInputLanguages}" SelectedItem="{Binding Path=NativeLang}"/>
+            <Label Content="_Shuffle:" Grid.Row="4" Grid.Column="0" Target="{Binding ElementName=shuffle}"/>
+            <CheckBox IsChecked="{Binding Path=Shuffle, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Name="shuffle"/>
+            <Label Content="Show _Rule Text:" Grid.Row="5" Grid.Column="0" Target="{Binding ElementName=rule}"/>
+            <CheckBox IsChecked="{Binding Path=ShowRule, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1" Name="rule"/>
+        </Grid>
+		<cui:StatusCtrl Grid.Row="1" Grid.Column="1" x:Name="status"/>
+    </Grid>
+</Window>

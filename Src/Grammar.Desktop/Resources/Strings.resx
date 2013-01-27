@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="COL_ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="COL_COMMENT" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="COL_EXAMPLE_ID" xml:space="preserve">
+    <value>ExampleId</value>
+  </data>
+  <data name="COL_EXCEPTION" xml:space="preserve">
+    <value>Exception</value>
+  </data>
+  <data name="COL_EXPANDED" xml:space="preserve">
+    <value>Expanded</value>
+  </data>
+  <data name="COL_GRAMMAR_ID" xml:space="preserve">
+    <value>GrammarId</value>
+  </data>
+  <data name="COL_NATIVE_LANG" xml:space="preserve">
+    <value>NativeLang</value>
+  </data>
+  <data name="COL_NATIVE_TEXT" xml:space="preserve">
+    <value>NativeText</value>
+  </data>
+  <data name="COL_PARENT_TOPIC_ID" xml:space="preserve">
+    <value>ParentTopicId</value>
+  </data>
+  <data name="COL_POSITION" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="COL_RULE_ID" xml:space="preserve">
+    <value>RuleId</value>
+  </data>
+  <data name="COL_SHOWRULE" xml:space="preserve">
+    <value>ShowRule</value>
+  </data>
+  <data name="COL_SHUFFLE" xml:space="preserve">
+    <value>Shuffle</value>
+  </data>
+  <data name="COL_TARGET_LANG" xml:space="preserve">
+    <value>TargetLang</value>
+  </data>
+  <data name="COL_TARGET_TEXT" xml:space="preserve">
+    <value>TargetText</value>
+  </data>
+  <data name="COL_TITLE" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="COL_TOPIC_ID" xml:space="preserve">
+    <value>TopicId</value>
+  </data>
+  <data name="COMPANY" xml:space="preserve">
+    <value>LinguaSpace</value>
+  </data>
+  <data name="DELETE_EXAMPLES" xml:space="preserve">
+    <value>DELETE FROM Examples WHERE ExampleId = @ExampleId</value>
+  </data>
+  <data name="DELETE_RULES" xml:space="preserve">
+    <value>DELETE FROM Rules WHERE RuleId = @RuleId</value>
+  </data>
+  <data name="DELETE_TOPICS" xml:space="preserve">
+    <value>DELETE FROM Topics WHERE TopicId = @TopicId</value>
+  </data>
+  <data name="FK_EXAMPLES_RULES" xml:space="preserve">
+    <value>FkExamplesRules</value>
+  </data>
+  <data name="FK_RULES_TOPICS" xml:space="preserve">
+    <value>FkRulesTopcs</value>
+  </data>
+  <data name="FK_TOPICS_TOPICS" xml:space="preserve">
+    <value>FkTopicsTopics</value>
+  </data>
+  <data name="INSERT_EXAMPLES" xml:space="preserve">
+    <value>INSERT INTO Examples (ExampleId, RuleId, Position, TargetText, NativeText, Active, Exception)
+VALUES (@ExampleId, @RuleId, @Position, @TargetText, @NativeText, @Active, @Exception)</value>
+  </data>
+  <data name="INSERT_GRAMMAR" xml:space="preserve">
+    <value>INSERT INTO Grammar (GrammarId, Title, Comment, TargetLang, NativeLang, Shuffle, ShowRule) 
+VALUES (@GrammarId, @Title, @Comment, @TargetLang, @NativeLang, @Shuffle, @ShowRule)</value>
+  </data>
+  <data name="INSERT_RULES" xml:space="preserve">
+    <value>INSERT INTO Rules (RuleId, TopicId, Position, Comment, Active) 
+VALUES (@RuleId, @TopicId, @Position, @Comment, @Active)</value>
+  </data>
+  <data name="INSERT_TOPICS" xml:space="preserve">
+    <value>INSERT INTO Topics (TopicId, ParentTopicId, Position, Title, Expanded) 
+VALUES (@TopicId, @ParentTopicId, @Position, @Title, @Expanded)</value>
+  </data>
+  <data name="META_GRAMMAR" xml:space="preserve">
+    <value>LinguaSpace.Grammar</value>
+  </data>
+  <data name="PASSWORD_GRAMMAR" xml:space="preserve">
+    <value>{32C03E86-53DF-4765-9D96-6C5653311E99}</value>
+  </data>
+  <data name="PK_EXAMPLES" xml:space="preserve">
+    <value>PkExamples</value>
+  </data>
+  <data name="PK_GRAMMAR" xml:space="preserve">
+    <value>Grammar</value>
+  </data>
+  <data name="PK_RULES" xml:space="preserve">
+    <value>PkRules</value>
+  </data>
+  <data name="PK_TOPICS" xml:space="preserve">
+    <value>PkTopics</value>
+  </data>
+  <data name="PRODUCT" xml:space="preserve">
+    <value>Grammar</value>
+  </data>
+  <data name="SCHEMA_GRAMMAR" xml:space="preserve">
+    <value>LinguaSpace.Grammar.Resources.Schema.Grammar.sql</value>
+  </data>
+  <data name="SELECT_EXAMPLES" xml:space="preserve">
+    <value>SELECT ExampleId, RuleId, Position, TargetText, NativeText, Active, Exception
+FROM Examples
+ORDER BY RuleId, Position</value>
+  </data>
+  <data name="SELECT_GRAMMAR" xml:space="preserve">
+    <value>SELECT GrammarId, Title, Comment, TargetLang, NativeLang, Shuffle, ShowRule 
+FROM Grammar</value>
+  </data>
+  <data name="SELECT_RULES" xml:space="preserve">
+    <value>SELECT RuleId, TopicId, Position, Comment, Active
+FROM Rules
+ORDER BY TopicId, Position</value>
+  </data>
+  <data name="SELECT_TOPICS" xml:space="preserve">
+    <value>SELECT TopicId, ParentTopicId, Position, Title, Expanded
+FROM Topics ORDER BY ParentTopicId, Position</value>
+  </data>
+  <data name="TABLE_EXAMPLES" xml:space="preserve">
+    <value>Examples</value>
+  </data>
+  <data name="TABLE_GRAMMAR" xml:space="preserve">
+    <value>Grammar</value>
+  </data>
+  <data name="TABLE_RULES" xml:space="preserve">
+    <value>Rules</value>
+  </data>
+  <data name="TABLE_TOPICS" xml:space="preserve">
+    <value>Topics</value>
+  </data>
+  <data name="UPDATE_EXAMPLES" xml:space="preserve">
+    <value>UPDATE Examples 
+SET RuleId = @RuleId, Position = @Position, TargetText = @TargetText, NativeText = @NativeText, Active = @Active, Exception = @Exception
+WHERE ExampleId = @ExampleId</value>
+  </data>
+  <data name="UPDATE_GRAMMAR" xml:space="preserve">
+    <value>UPDATE Grammar 
+SET Title = @Title, Comment = @Comment, TargetLang = @TargetLang, NativeLang = @NativeLang, Shuffle = @Shuffle, ShowRule = @ShowRule
+WHERE GrammarId = @GrammarId</value>
+  </data>
+  <data name="UPDATE_RULES" xml:space="preserve">
+    <value>UPDATE Rules
+SET TopicId = @TopicId, Position = @Position, Comment = @Comment, Active = @Active
+WHERE RuleId = @RuleId</value>
+  </data>
+  <data name="UPDATE_TOPICS" xml:space="preserve">
+    <value>UPDATE Topics 
+SET ParentTopicId = @ParentTopicId, Position = @Position, Title = @Title, Expanded = @Expanded 
+WHERE TopicId = @TopicId</value>
+  </data>
+  <data name="VERSION_FULL" xml:space="preserve">
+    <value>3.0.0</value>
+  </data>
+  <data name="VERSION_SHORT" xml:space="preserve">
+    <value>3.0</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>LinguaSpace Grammar 3.0</value>
+  </data>
+</root>

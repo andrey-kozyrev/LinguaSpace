@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE dotfuscator SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscator_v2.1.dtd">
+<dotfuscator version="2.1">
+  <!--This is application generated code. Do not edit manually.-->
+  <input>
+    <asmlist>
+      <inputassembly>
+        <file dir="C:\lib\LinguaSpace\Code\Bin\Desktop\Release" name="lscd.dll" />
+      </inputassembly>
+      <inputassembly>
+        <file dir="C:\lib\LinguaSpace\Code\Bin\Desktop\Release" name="lspd.dll" />
+      </inputassembly>
+      <inputassembly>
+        <file dir="C:\lib\LinguaSpace\Code\Bin\Desktop\Release" name="Words.exe" />
+      </inputassembly>
+    </asmlist>
+  </input>
+  <output>
+    <file dir="C:\lib\LinguaSpace\Code\Deploy\Desktop" />
+  </output>
+  <renaming>
+    <excludelist>
+      <assembly>
+        <file dir="C:\lib\LinguaSpace\Code\Bin\Desktop\Release" name="lscd.dll" />
+      </assembly>
+      <assembly>
+        <file dir="C:\lib\LinguaSpace\Code\Bin\Desktop\Release" name="lspd.dll" />
+      </assembly>
+      <assembly>
+        <file dir="C:\lib\LinguaSpace\Code\Bin\Desktop\Release" name="Words.exe" />
+      </assembly>
+    </excludelist>
+    <mapping>
+      <mapoutput overwrite="false">
+        <file dir="${configdir}\Dotfuscated" name="Map.xml" />
+      </mapoutput>
+    </mapping>
+  </renaming>
+</dotfuscator>

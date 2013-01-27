@@ -1,0 +1,375 @@
+﻿<Window x:Class="LinguaSpace.Grammar.UI.MainWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    xmlns:gr="clr-namespace:LinguaSpace.Grammar.UI"
+    Style="{StaticResource TitleWindow}"
+    WindowStartupLocation="CenterScreen"
+    Icon="../Resources/Icons/grammar.ico"
+    Height="800"
+    Width="1000">
+	<Window.Resources>
+	
+		<ui:ExampleConverter x:Key="ExampleConverter"/>
+	
+        <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+            <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"/>
+        </Style>
+        
+		<HierarchicalDataTemplate x:Key="TopicTemplate"
+								  ItemsSource="{Binding Path=Topics}">
+			<HierarchicalDataTemplate.Resources>
+				<Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+					<Setter Property="Margin" Value="2"/>
+					<Setter Property="TextWrapping" Value="Wrap"/>
+				</Style>
+			</HierarchicalDataTemplate.Resources>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="{Binding Path=Title}"/>
+				<TextBlock Text="{Binding Path=RulesCount}"/>
+                <StackPanel.InputBindings>
+                    <MouseBinding Command="{x:Static ui:EditCommands.Edit}" Gesture="LeftDoubleClick"/>
+                </StackPanel.InputBindings>
+			</StackPanel>
+			
+		</HierarchicalDataTemplate>
+		
+		<DataTemplate x:Key="RuleTemplate">
+			<DataTemplate.Resources>
+				<Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+					<Setter Property="Margin" Value="2"/>
+					<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+				</Style>
+			</DataTemplate.Resources>
+			<StackPanel Orientation="Vertical" Margin="1 1 1 1">
+
+				<CheckBox IsChecked="{Binding Path=Active}" Margin="0" Focusable="False" HorizontalAlignment="Right" Content="Active" FlowDirection="RightToLeft" FontSize="9" FontWeight="Bold"/>
+
+				<FlowDocumentScrollViewer VerticalScrollBarVisibility="Hidden"
+									  Document="{Binding Path=Comment, Converter={StaticResource ExampleConverter}}"
+									  Foreground="{Binding Path=Foreground}"
+									  IsEnabled="False"/>
+				
+				<FlowDocumentScrollViewer VerticalScrollBarVisibility="Hidden"
+										  Margin="5"
+										  MaxHeight="100"
+										  Visibility="{Binding Path=ExamplesVisibility}"
+										  Document="{Binding Path=Examples, Converter={StaticResource ExampleConverter}}"
+										  IsEnabled="False"/>
+				
+				<!--
+				<TextBlock Text="{Binding Path=Examples}" Margin="5" Foreground="{Binding Path=Foreground}"/>
+				<StackPanel Orientation="Horizontal" Visibility="{Binding Path=ExamplesVisibility}">
+					<TextBlock Text="Examples:" Foreground="{x:Static SystemColors.GrayTextBrush}"/>
+				</StackPanel>
+				-->
+                <StackPanel.InputBindings>
+                    <MouseBinding Command="{x:Static ui:EditCommands.Edit}" Gesture="LeftDoubleClick"/>
+                </StackPanel.InputBindings>
+			</StackPanel>
+		</DataTemplate>
+
+		<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+			<Setter Property="Margin" Value="0 0 5 5"/>
+		</Style>
+		
+	</Window.Resources>
+	<Window.CommandBindings>
+		<CommandBinding Command="{x:Static ui:FileCommands.New}" CanExecute="OnCanFileNew" Executed="OnFileNew"/>
+		<CommandBinding Command="{x:Static ui:FileCommands.Open}" CanExecute="OnCanFileOpen" Executed="OnFileOpen"/>
+		<CommandBinding Command="{x:Static ui:FileCommands.Properties}" CanExecute="OnCanFileProperties" Executed="OnFileProperties"/>
+		<CommandBinding Command="{x:Static ui:FileCommands.Save}" CanExecute="OnCanFileSave" Executed="OnFileSave"/>
+        <CommandBinding Command="{x:Static ui:FileCommands.SaveAs}" CanExecute="OnCanFileSaveAs" Executed="OnFileSaveAs"/>
+		<CommandBinding Command="{x:Static ui:FileCommands.Close}" CanExecute="OnCanFileClose" Executed="OnFileClose"/>
+		<CommandBinding Command="{x:Static ui:FileCommands.Exit}" CanExecute="OnCanFileExit" Executed="OnFileExit"/>
+		<CommandBinding Command="{x:Static ui:ExerciseCommands.Practice}" CanExecute="OnCanPractice" Executed="OnPractice"/>
+	</Window.CommandBindings>
+		<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="400"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		
+		<Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+			<Menu.Resources>
+				<Style TargetType="Image" BasedOn="{StaticResource MenuImage}"/>
+				<Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource MenuImage}"/>
+			</Menu.Resources>
+			<MenuItem Header="_File">
+				<MenuItem Command="{x:Static ui:FileCommands.New}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/File/New.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:FileCommands.Open}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/File/Open.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:FileCommands.Properties}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/File/Properties.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:FileCommands.Save}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/File/Save.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:FileCommands.SaveAs}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/File/SaveAs.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<Separator/>
+				<MenuItem Command="{x:Static ui:FileCommands.Close}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/File/Close.png"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<Separator/>
+				<MenuItem Command="{x:Static ui:FileCommands.Exit}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/File/Exit.png"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+			<MenuItem Header="_Edit">
+				<MenuItem Command="{x:Static ui:EditCommands.New}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/New.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:EditCommands.NewChild}"/>
+				<MenuItem Command="{x:Static ui:EditCommands.Edit}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:EditCommands.Delete}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<Separator/>
+				<MenuItem Command="{x:Static ui:EditCommands.MoveUp}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Up.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:EditCommands.MoveDown}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Down.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<Separator/>
+				<MenuItem Command="{x:Static ui:EditCommands.Cut}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Cut.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:EditCommands.Copy}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Copy.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Command="{x:Static ui:EditCommands.Paste}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Edit/Paste.gif"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+			<MenuItem Header="E_xercise">
+				<MenuItem Command="{x:Static ui:ExerciseCommands.Practice}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/Exercise/FlashCards.png"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+			<MenuItem Header="_Help">
+				<MenuItem Command="{x:Static ui:HelpCommands.About}">
+					<MenuItem.Icon>
+						<ui:GreyImage Source="../Resources/Icons/16/LinguaSpace.png"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+		</Menu>
+		<ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+			<ToolBar.Resources>
+				<Style TargetType="Image" BasedOn="{StaticResource ToolbarImage}"/>
+				<Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+					<Setter Property="Margin" Value="5 0 5 0"/>
+				</Style>
+				<Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource ToolbarImage}"/>
+			</ToolBar.Resources>
+			<Button Command="{x:Static ui:FileCommands.New}" ToolTip="New grammar file..." ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/File/New.gif"/>
+					<TextBlock Text="New"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:FileCommands.Open}" ToolTip="Open grammar file..." ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/File/Open.gif"/>
+					<TextBlock Text="Open"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:FileCommands.Save}" ToolTip="Save grammar" ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/File/Save.gif"/>
+					<TextBlock Text="Save"/>
+				</StackPanel>
+			</Button>
+			<Separator/>
+			<Button Command="{x:Static ui:EditCommands.New}" ToolTip="Add new item..." ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/New.gif"/>
+					<TextBlock Text="Add"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:EditCommands.Edit}" ToolTip="Modify selected item..." ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.gif"/>
+					<TextBlock Text="Modify"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:EditCommands.Delete}" ToolTip="Delete selected item" ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.gif"/>
+					<TextBlock Text="Delete"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:EditCommands.MoveUp}" ToolTip="Move selected item up" ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Up.gif"/>
+					<TextBlock Text="Up"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:EditCommands.MoveDown}" ToolTip="Move selected item down" ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Down.gif"/>
+					<TextBlock Text="Down"/>
+				</StackPanel>
+			</Button>
+			<Separator/>
+			<Button Command="{x:Static ui:EditCommands.Cut}" ToolTip="Cut selected item" ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Cut.gif"/>
+					<TextBlock Text="Cut"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:EditCommands.Copy}" ToolTip="Copy selected item" ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Copy.gif"/>
+					<TextBlock Text="Copy"/>
+				</StackPanel>
+			</Button>
+			<Button Command="{x:Static ui:EditCommands.Paste}" ToolTip="Paste selected item" ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Paste.gif"/>
+					<TextBlock Text="Paste"/>
+				</StackPanel>
+			</Button>
+			<Separator/>
+			<Button Command="{x:Static ui:ExerciseCommands.Practice}" ToolTip="Run exercise..." ToolTipService.ShowOnDisabled="True">
+				<StackPanel Orientation="Horizontal">
+					<ui:GreyImage Source="../Resources/Icons/16/Exercise/FlashCards.png"/>
+					<TextBlock Text="Practice"/>
+				</StackPanel>
+			</Button>
+		</ToolBar>
+		<TreeView Grid.Row="2" Grid.Column="0" 
+			      DataContext="{Binding Path=Grammar.RootTopic}"
+				  x:Name="_topics"
+				  BorderThickness="0" 
+				  Margin="5" 
+                  ContextMenu="{StaticResource EditContextMenu}"
+				  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+				  ScrollViewer.VerticalScrollBarVisibility="Visible"
+				  ItemTemplate="{StaticResource TopicTemplate}"
+				  ItemsSource="{Binding Path=Topics}">
+			<TreeView.CommandBindings>
+				<CommandBinding Command="{x:Static ui:EditCommands.New}" CanExecute="OnCanTopicNew" Executed="OnTopicNew"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.NewChild}" CanExecute="OnCanTopicNewChild" Executed="OnTopicNewChild"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Edit}" CanExecute="OnCanTopicEdit" Executed="OnTopicEdit"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Delete}" CanExecute="OnCanTopicDelete" Executed="OnTopicDelete"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.MoveUp}" CanExecute="OnCanTopicUp" Executed="OnTopicUp"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.MoveDown}" CanExecute="OnCanTopicDown" Executed="OnTopicDown"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Cut}" CanExecute="OnCanCutTopic" Executed="OnCutTopic"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Copy}" CanExecute="OnCanCopyTopic" Executed="OnCopyTopic"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Paste}" CanExecute="OnCanPasteTopic" Executed="OnPasteTopic"/>
+			</TreeView.CommandBindings>
+		</TreeView>
+		<GridSplitter Grid.Row="2" Grid.Column="0" Width="4" Focusable="False"/>
+		<ListBox Grid.Row="2" Grid.Column="1" 
+				 BorderThickness="0" 
+				 Margin="0 5 5 5"
+				 x:Name="_rules"
+				 DataContext="{Binding ElementName=_topics, Path=SelectedItem}"
+				 ItemsSource="{Binding Path=Rules}"
+				 ItemTemplate="{StaticResource RuleTemplate}"
+                 ContextMenu="{StaticResource EditContextMenu}"
+                 DataContextChanged="OnRulesDataContextChanged"
+				 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+				 ScrollViewer.VerticalScrollBarVisibility="Visible">
+			<ListBox.CommandBindings>
+				<CommandBinding Command="{x:Static ui:EditCommands.New}" CanExecute="OnCanRuleNew" Executed="OnRuleNew"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Edit}" CanExecute="OnCanRuleEdit" Executed="OnRuleEdit"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Delete}" CanExecute="OnCanRuleDelete" Executed="OnRuleDelete"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.MoveUp}" CanExecute="OnCanRuleUp" Executed="OnRuleUp"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.MoveDown}" CanExecute="OnCanRuleDown" Executed="OnRuleDown"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Cut}" CanExecute="OnCanCutRule" Executed="OnCutRule"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Copy}" CanExecute="OnCanCopyRule" Executed="OnCopyRule"/>
+				<CommandBinding Command="{x:Static ui:EditCommands.Paste}" CanExecute="OnCanPasteRule" Executed="OnPasteRule"/>
+				<CommandBinding Command="{x:Static gr:GrammarCommands.ToggleActive}" CanExecute="OnCanToggleActive" Executed="OnToggleActive"/>
+			</ListBox.CommandBindings>
+		</ListBox>
+		<StatusBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+			<StatusBar.Resources>
+				<Style TargetType="TextBlock">
+					<Setter Property="Margin" Value="5 0 5 0"/>
+				</Style>
+			</StatusBar.Resources>
+			<StatusBarItem DockPanel.Dock="Right">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Examples:"/>
+					<TextBlock Text="{Binding Path=ExamplesCount}"/>
+				</StackPanel>
+			</StatusBarItem>
+			<Separator DockPanel.Dock="Right"/>
+			<StatusBarItem DockPanel.Dock="Right">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Rules:"/>
+					<TextBlock Text="{Binding Path=RulesCount}"/>
+				</StackPanel>
+			</StatusBarItem>
+			<Separator DockPanel.Dock="Right"/>
+			<StatusBarItem DockPanel.Dock="Right">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Languages:"/>
+					<TextBlock Text="{Binding Path=GrammarLanguages}"/>
+				</StackPanel>
+			</StatusBarItem>
+			<Separator DockPanel.Dock="Right"/>
+			<StatusBarItem DockPanel.Dock="Right">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Grammar:"/>
+					<TextBlock Text="{Binding Path=GrammarTitle}"/>
+				</StackPanel>
+			</StatusBarItem>
+			<Separator DockPanel.Dock="Right"/>
+			<StatusBarItem DockPanel.Dock="Right">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="File:"/>
+					<TextBlock Text="{Binding Path=Path}" TextTrimming="CharacterEllipsis"/>
+				</StackPanel>
+			</StatusBarItem>
+		</StatusBar>
+	</Grid>
+</Window>

@@ -1,0 +1,65 @@
+﻿<Window x:Class="LinguaSpace.Words.UI.WordFindWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Style="{StaticResource TitleWindow}"
+    xmlns:this="clr-namespace:LinguaSpace.Words.UI"
+    xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+    Width="350"
+	MinWidth="350"
+    Height="300" 
+    MinHeight="250"
+	WindowStartupLocation="CenterOwner"
+    SizeToContent="Manual"
+    Icon="../Resources/Icons/16/LinguaSpace.png"
+    ResizeMode="CanResizeWithGrip"
+    FocusManager.FocusedElement="{Binding ElementName=textFilter}"
+    ShowInTaskbar="False">
+	<Window.Resources>
+		<DataTemplate x:Key="WordCell">
+			<TextBlock Margin="-6 0 0 0" Text="{Binding Path=Word}" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Gray"/>
+        </DataTemplate>
+	</Window.Resources>
+	<Window.CommandBindings>
+		<CommandBinding Command="{x:Static ComponentCommands.MoveFocusDown}" Executed="Execute_GoToListBox"/>
+	</Window.CommandBindings>
+	<Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid Margin="10" Grid.Column="0" Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+		<RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Label Content="Word:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=textFilter}"/>
+	  <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=WordText, Mode=OneWay}" FontWeight="Bold" Margin="10" FontFamily="Verdana" FontSize="13"/>
+   	  <Label Content="_Filter:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=textFilter}"/>
+      <TextBox x:Name="textFilter" Grid.Row="1" Grid.Column="1" Text="{Binding Path=FilterWordText, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox.InputBindings>
+          <KeyBinding Key="Down" Command="{x:Static ComponentCommands.MoveFocusDown}"/>
+        </TextBox.InputBindings>
+      </TextBox>
+	  <Label Content="_Words:" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=listWords}"/>
+	  <ListView x:Name="listWords"
+               Grid.Row="2" Grid.Column="1"
+               ItemsSource="{Binding Path=Words}"
+               IsSynchronizedWithCurrentItem="True">
+		  <ListView.View>
+			<GridView>
+				<GridViewColumn CellTemplate="{StaticResource WordCell}" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=ActualWidth}"/>
+			</GridView>
+		  </ListView.View>
+      </ListView>
+    </Grid>
+    <ui:StatusCtrl x:Name="status" Grid.Row="1" Grid.Column="0"/>
+  </Grid>
+</Window>

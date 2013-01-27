@@ -1,0 +1,503 @@
+﻿<Window x:Class="LinguaSpace.Words.UI.LinguaSpaceWnd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:LinguaSpace.Common.UI;assembly=lscd"
+	xmlns:this="clr-namespace:LinguaSpace.Words.UI"
+    DragEnter="OnDrag"         
+    DragOver="OnDrag"
+    Drop="OnDrop"
+	MinHeight="300" 
+	MinWidth="450"
+    Height="480" 
+    Width="640"
+    Style="{StaticResource TitleWindow}"
+    AllowDrop="True"
+    WindowStartupLocation="CenterScreen"
+    FocusManager.FocusedElement="{Binding ElementName=listWords}"
+    Icon="../../Resources/Icons/32/LinguaSpace.png">
+    <Window.Resources>
+        <this:Position2Position x:Key="Position2Position"/>
+		<ui:ExampleConverter x:Key="ExampleConverter" FontSize="13"/>
+        
+		<ContextMenu x:Key="MeaningsContextMenu">
+			<ContextMenu.Resources>
+				<Style TargetType="Image" BasedOn="{StaticResource MenuImage}"/>
+				<Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource MenuImage}"/>
+			</ContextMenu.Resources>
+			<MenuItem Command="{x:Static ui:EditCommands.New}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/New.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Command="{x:Static ui:EditCommands.Edit}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Command="{x:Static ui:EditCommands.Delete}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<Separator/>
+			<MenuItem Command="{x:Static ui:EditCommands.MoveUp}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/MoveUp.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Command="{x:Static ui:EditCommands.MoveDown}">
+				<MenuItem.Icon>
+					<ui:GreyImage Source="../Resources/Icons/16/Edit/MoveDown.png"/>
+				</MenuItem.Icon>
+			</MenuItem>
+            <Separator/>
+            <MenuItem Command="{x:Static ui:EditCommands.FindMeaning}">
+                <MenuItem.Icon>
+                    <ui:GreyImage Source="../Resources/Icons/16/Edit/Find.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator/>
+            <MenuItem Command="{x:Static ui:EditCommands.Touch}">
+                <MenuItem.Icon>
+                    <ui:GreyImage Source="../Resources/Icons/16/Edit/Touch.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+
+        <ContextMenu x:Key="WordsContextMenu">
+            <ContextMenu.Resources>
+                <Style TargetType="Image" BasedOn="{StaticResource MenuImage}"/>
+                <Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource MenuImage}"/>
+            </ContextMenu.Resources>
+            <MenuItem Command="{x:Static ui:EditCommands.New}">
+                <MenuItem.Icon>
+                    <ui:GreyImage Source="../Resources/Icons/16/Edit/New.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Command="{x:Static ui:EditCommands.Edit}">
+                <MenuItem.Icon>
+                    <ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Command="{x:Static ui:EditCommands.Delete}">
+                <MenuItem.Icon>
+                    <ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator/>
+            <MenuItem Command="{x:Static ui:EditCommands.FindWord}">
+                <MenuItem.Icon>
+                    <ui:GreyImage Source="../Resources/Icons/16/Edit/Find.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static ui:FileCommands.New}" CanExecute="OnCanVocabularyNew" Executed="OnVocabularyNew"/>
+        <CommandBinding Command="{x:Static ui:FileCommands.Open}" CanExecute="OnCanVocabularyOpen" Executed="OnVocabularyOpen"/>
+        <CommandBinding Command="{x:Static ui:FileCommands.Properties}" CanExecute="OnCanVocabularyProperties" Executed="OnVocabularyProperties"/>
+        <CommandBinding Command="{x:Static ui:FileCommands.Save}" CanExecute="OnCanVocabularySave" Executed="OnVocabularySave"/>
+        <CommandBinding Command="{x:Static ui:FileCommands.Close}" CanExecute="OnCanVocabularyClose" Executed="OnVocabularyClose"/>
+        <CommandBinding Command="{x:Static ui:FileCommands.Exit}" CanExecute="OnCanExit" Executed="OnExit"/>
+		<CommandBinding Command="{x:Static ui:ExerciseCommands.FlashCards}" CanExecute="OnCanFlashCards" Executed="OnFlashCards"/>
+        <CommandBinding Command="{x:Static ui:UserCommands.New}" CanExecute="OnCanUserNew" Executed="OnUserNew"/>
+        <CommandBinding Command="{x:Static ui:UserCommands.Settings}" CanExecute="OnCanUserSettings" Executed="OnUserSettings"/>
+        <CommandBinding Command="{x:Static ui:UserCommands.Switch}" CanExecute="OnCanUserSwitch" Executed="OnUserSwitch"/>
+        <CommandBinding Command="{x:Static ui:HelpCommands.Register}" CanExecute="OnCanRegister" Executed="OnRegister"/>
+        <CommandBinding Command="{x:Static ui:HelpCommands.QuickStart}" CanExecute="OnCanQuickStart" Executed="OnQuickStart"/>
+        <CommandBinding Command="{x:Static ui:HelpCommands.About}" CanExecute="OnCanAbout" Executed="OnAbout"/>
+        <CommandBinding Command="{x:Static ui:NavigateCommands.GoToWord}" CanExecute="OnCanGoToWord" Executed="OnGoToWord"/>
+        <CommandBinding Command="{x:Static ui:EditCommands.FindWord}" CanExecute="OnCanFindWord" Executed="OnFindWord"/>
+        <CommandBinding Command="{x:Static ui:EditCommands.FindMeaning}" CanExecute="OnCanFindMeaning" Executed="OnFindMeaning"/>
+        <CommandBinding Command="{x:Static ui:NavigateCommands.Back}" CanExecute="OnCanBack" Executed="OnBack"/>
+        <CommandBinding Command="{x:Static ui:NavigateCommands.Forward}" CanExecute="OnCanForward" Executed="OnForward"/>
+        <CommandBinding Command="{x:Static ui:ShellCommands.Open}" CanExecute="OnCanShellOpen" Executed="OnShellOpen"/>
+        <CommandBinding Command="{x:Static ui:MobileCommands.Explore}" CanExecute="OnCanMobileExplore" Executed="OnMobileExplore"/>
+        <CommandBinding Command="{x:Static ui:MobileCommands.Synchronize}" CanExecute="OnCanMobileSynchronize" Executed="OnMobileSynchronize"/>
+    </Window.CommandBindings>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <Menu>
+                <Menu.Resources>
+                    <Style TargetType="Image" BasedOn="{StaticResource MenuImage}"/>
+                    <Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource MenuImage}"/>
+                </Menu.Resources>
+                <MenuItem Header="_File">
+                    <MenuItem Command="{x:Static ui:FileCommands.New}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/File/New.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:FileCommands.Open}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/File/Open.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:FileCommands.Properties}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/File/Properties.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:FileCommands.Save}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/File/Save.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Command="{x:Static ui:FileCommands.Close}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/File/Close.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Command="{x:Static ui:FileCommands.Exit}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/File/Exit.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Command="{x:Static ui:EditCommands.New}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/New.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:EditCommands.Edit}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Edit.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:EditCommands.Delete}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Delete.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Command="{x:Static ui:EditCommands.MoveUp}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/MoveUp.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:EditCommands.MoveDown}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/MoveDown.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Command="{x:Static ui:EditCommands.Touch}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Touch.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Command="{x:Static ui:EditCommands.FindWord}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Find.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:EditCommands.FindMeaning}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Find.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Command="{x:Static ui:EditCommands.Filter}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Edit/Filter.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Navigate">
+                    <MenuItem Command="{x:Static ui:NavigateCommands.Back}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Navigate/Back.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:NavigateCommands.Forward}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Navigate/Forward.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="_User">
+                    <MenuItem Command="{x:Static ui:UserCommands.New}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/User/New.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:UserCommands.Settings}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/User/Settings.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:UserCommands.Switch}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/User/Switch.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="E_xercise">
+                    <MenuItem Command="{x:Static ui:ExerciseCommands.FlashCards}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Exercise/FlashCards.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
+                <!--
+                <MenuItem Header="_Mobile">
+                    <MenuItem Command="{x:Static ui:MobileCommands.Explore}" CommandParameter="Vocabularies" Header="_Vocabularies..."/>
+                    <MenuItem Command="{x:Static ui:MobileCommands.Explore}" CommandParameter="Profiles" Header="_Profiles..."/>
+                    <Separator/>
+                    <MenuItem Command="{x:Static ui:MobileCommands.Synchronize}"/>
+                </MenuItem>
+                -->
+                
+                <MenuItem Header="_Help">
+                    <MenuItem Command="{x:Static ui:HelpCommands.QuickStart}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Help/Contents.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:HelpCommands.Register}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/Help/Register.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{x:Static ui:HelpCommands.About}">
+                        <MenuItem.Icon>
+                            <ui:GreyImage Source="../Resources/Icons/16/LinguaSpace.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            <ToolBar>
+                <ToolBar.Resources>
+                    <Style TargetType="Image" BasedOn="{StaticResource ButtonImage}"/>
+                    <Style TargetType="{x:Type ui:GreyImage}" BasedOn="{StaticResource ButtonImage}"/>
+                </ToolBar.Resources>
+                <Button Command="{x:Static ui:FileCommands.Open}" ToolTip="Open..." ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/File/Open.png"/>
+                </Button>
+                <Button Command="{x:Static ui:FileCommands.Properties}" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/File/Properties.png" ToolTip="Properties..."/>
+                </Button>
+                <Button Command="{x:Static ui:FileCommands.Save}" ToolTip="Save" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/File/Save.png"/>
+                </Button>
+                <Separator/>
+                <Button Command="{x:Static ui:EditCommands.New}" ToolTip="New..." ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Edit/New.png"/>
+                </Button>
+                <Button Command="{x:Static ui:EditCommands.Edit}" ToolTip="Edit..." ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Edit/Edit.png"/>
+                </Button>
+                <Button Command="{x:Static ui:EditCommands.Delete}" ToolTip="Delete" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Edit/Delete.png"/>
+                </Button>
+                <Button Command="{x:Static ui:EditCommands.MoveUp}" ToolTip="Move Up" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Edit/MoveUp.png"/>
+                </Button>
+                <Button Command="{x:Static ui:EditCommands.MoveDown}" ToolTip="Move Down" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Edit/MoveDown.png"/>
+                </Button>
+                <Separator/>
+                <Button Command="{x:Static ui:EditCommands.FindWord}" ToolTip="Find..." ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Edit/Find.png"/>
+                </Button>
+                <Separator/>
+                <Button Command="{x:Static ui:EditCommands.Filter}" ToolTip="Filter..." ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Edit/Filter.png"/>
+                </Button>
+                <Separator/>
+                <Button Command="{x:Static ui:NavigateCommands.Back}" ToolTip="Back" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Navigate/Back.png"/>
+                </Button>
+                <Button Command="{x:Static ui:NavigateCommands.Forward}" ToolTip="Forward" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Navigate/Forward.png"/>
+                </Button>
+                <Separator/>
+                <Button Command="{x:Static ui:UserCommands.Settings}" ToolTip="Settings..." ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/User/Settings.png"/>
+                </Button>
+                <Separator/>
+                <Button Command="{x:Static ui:ExerciseCommands.FlashCards}" ToolTip="Flashcards..." ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Exercise/FlashCards.png"/>
+                </Button>
+                <Separator/>
+                <Button Command="{x:Static ui:HelpCommands.QuickStart}" ToolTip="Quick Start" ToolTipService.ShowOnDisabled="True">
+                    <ui:GreyImage Source="../Resources/Icons/32/Help/Contents.png"/>
+                </Button>
+            </ToolBar>
+        </StackPanel>
+        <Grid DockPanel.Dock="Bottom" Background="{Binding ElementName=toolBar, Path=Background}">
+            <Grid.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Margin" Value="10 2 2 2"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="5 0 5 0"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" x:Name="statusVocabulary" Grid.Row="0" Grid.Column="1" ToolTip="Vocabulary">
+                <Image Source="../Resources/Icons/16/LinguaSpace.png" Height="16" Width="16"/>
+                <TextBlock Text="{Binding Path=VocabularyName}"/>
+      </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" ToolTip="Word Index">
+                <TextBlock x:Name="wordPosition" Text="{Binding Path=Words.CurrentPosition, Converter={StaticResource Position2Position}}"/>
+         <TextBlock Text="/" Margin="0"/>
+         <TextBlock x:Name="wordCount" Text="{Binding Path=Words.Count}"/>
+      </StackPanel>
+            <StackPanel Orientation="Horizontal" x:Name="statusCount" Grid.Row="0" Grid.Column="3">
+                <TextBlock/>        
+      </StackPanel>
+            <StackPanel Orientation="Horizontal" x:Name="statusUser" Grid.Row="0" Grid.Column="4" ToolTip="User Profile">
+                <Image Source="../Resources/Icons/16/User/User.png" Height="16" Width="16"/>
+                <TextBlock Text="{Binding Path=ProfileName}"/>
+      </StackPanel>
+        </Grid>
+        <Border BorderBrush="LightGray" BorderThickness="1">
+			<Border.Resources>
+				<!-- Common -->
+				<ControlTemplate x:Key="ChildListBoxControlTemplate">
+					<StackPanel IsItemsHost="True"/>
+				</ControlTemplate>
+
+				<Style x:Key="ChildItemStyle" TargetType="ListBoxItem">
+					<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+					<Setter Property="IsEnabled" Value="False"/>
+				</Style>
+
+				<Style TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
+					<Setter Property="BorderThickness" Value="0"/>
+					<Setter Property="BorderBrush" Value="LightGray"/>
+					<Setter Property="Margin" Value="0"/>
+					<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+					<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"/>
+				</Style>
+
+				<Style TargetType="Border">
+					<Setter Property="BorderThickness" Value="0"/>
+					<Setter Property="BorderBrush" Value="Silver"/>
+				</Style>
+			</Border.Resources>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+				<Border Grid.Column="0" Margin="5 5 0 5">
+					<Border.Resources>
+						
+						<DataTemplate x:Key="WordItemTemplate">
+							<DockPanel Margin="10" HorizontalAlignment="Stretch">
+								<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+									<TextBlock FontWeight="Bold" Text="{Binding Path=Text}"/>
+                                    <TextBlock Text="{Binding Path=Type}" Foreground="{x:Static SystemColors.GrayTextBrush}" Margin="5 0 0 0"/>
+                                </StackPanel>
+								<TextBlock Text="{Binding Path=Translations, IsAsync=True}" Foreground="{x:Static SystemColors.GrayTextBrush}" Margin="5" TextTrimming="CharacterEllipsis"/>
+							</DockPanel>
+						</DataTemplate>
+						
+					</Border.Resources>
+					<ListBox x:Name="listWords"
+                         ContextMenu="{StaticResource WordsContextMenu}"
+                         ItemTemplate="{StaticResource WordItemTemplate}"
+                         HorizontalContentAlignment="Stretch"
+                         VirtualizingStackPanel.VirtualizationMode="Standard"
+                         IsSynchronizedWithCurrentItem="True">
+						<ListBox.CommandBindings>
+							<CommandBinding Command="{x:Static ui:EditCommands.New}" CanExecute="OnCanNewWord" Executed="OnNewWord"/>
+							<CommandBinding Command="{x:Static ui:EditCommands.Edit}" CanExecute="OnCanEditWord" Executed="OnEditWord"/>
+							<CommandBinding Command="{x:Static ui:EditCommands.Delete}" CanExecute="OnCanDelete" Executed="OnDelete"/>
+						</ListBox.CommandBindings>
+					</ListBox>
+				</Border>
+				<Border	Grid.Column="1" Margin="5 5 5 5">
+					<Border.Resources>
+						<DataTemplate x:Key="MeaningItemTemplate">
+							<DockPanel Margin="10 3 10 10">
+								<DockPanel.Resources>
+									<Style TargetType="TextBlock">
+										<Setter Property="Margin" Value="5"/>
+										<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+									</Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Margin" Value="0 7 0 0"/>
+                                    </Style>
+                                </DockPanel.Resources>
+								<TextBlock DockPanel.Dock="Left" FontWeight="Bold" Text="- " Margin="0 5 0 5"/>
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto"/>
+										<RowDefinition Height="{Binding Path=HasUsage}"/>
+										<RowDefinition Height="{Binding Path=HasSynonyms}"/>
+										<RowDefinition Height="{Binding Path=HasAntonyms}"/>
+										<RowDefinition Height="{Binding Path=HasDefinition}"/>
+										<RowDefinition Height="{Binding Path=HasExample}"/>
+									</Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Path=Translations}" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                    <Image DockPanel.Dock="Top" Stretch="None" Source="../Resources/Icons/New.gif" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{Binding Path=IsNew}" Grid.Row="0" Grid.Column="2"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Usage:" Foreground="Gray"/>
+                                    <TextBlock x:Name="textUsage" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Usage}" FontWeight="Bold"/>
+									<TextBlock Grid.Row="2" Grid.Column="0" Text="Synonyms:" Foreground="Gray"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Synonyms}"/>
+									<TextBlock Grid.Row="3" Grid.Column="0" Text="Antonyms:" Foreground="Gray"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Antonyms}"/>
+									<TextBlock Grid.Row="4" Grid.Column="0" Text="Definition:" Foreground="Gray"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Definition}"/>
+									<TextBlock Grid.Row="5" Grid.Column="0" Text="Example:" Foreground="Gray"/>
+
+                                    <FlowDocumentScrollViewer Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+															  VerticalScrollBarVisibility="Hidden"
+															  Document="{Binding Path=Example, Converter={StaticResource ExampleConverter}}"
+															  IsEnabled="False"/>
+                
+				               </Grid>
+							</DockPanel>
+						</DataTemplate>
+
+					</Border.Resources>
+				
+					<ListBox x:Name="listMeanings" 
+                         ContextMenu="{StaticResource MeaningsContextMenu}"
+						 ItemTemplate="{StaticResource MeaningItemTemplate}"
+						 VirtualizingStackPanel.VirtualizationMode="Standard">
+						<ListBox.CommandBindings>
+							<CommandBinding Command="{x:Static ui:EditCommands.New}" CanExecute="OnCanNewMeaning" Executed="OnNewMeaning"/>
+							<CommandBinding Command="{x:Static ui:EditCommands.Edit}" CanExecute="OnCanEditMeaning" Executed="OnEditMeaning"/>
+                            <CommandBinding Command="{x:Static ui:EditCommands.Touch}" CanExecute="OnCanTouchMeaning" Executed="OnTouchMeaning"/>
+							<CommandBinding Command="{x:Static ui:EditCommands.Delete}" CanExecute="OnCanDelete" Executed="OnDelete"/>
+							<CommandBinding Command="{x:Static ui:EditCommands.MoveUp}" CanExecute="OnCanMoveUpMeaning" Executed="OnMoveUpMeaning"/>
+							<CommandBinding Command="{x:Static ui:EditCommands.MoveDown}" CanExecute="OnCanMoveDownMeaning" Executed="OnMoveDownMeaning"/>
+						</ListBox.CommandBindings>
+					</ListBox>
+				</Border>
+
+
+			</Grid>
+        </Border>
+    </DockPanel>
+</Window>

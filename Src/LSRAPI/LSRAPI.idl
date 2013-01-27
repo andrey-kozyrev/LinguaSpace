@@ -1,0 +1,61 @@
+// LSRAPI.idl : IDL source for LSRAPI
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (LSRAPI.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+enum ConnectionType 
+{
+    USB = 0,
+	InfraRed = 1,
+	Serial = 2,
+	Network = 3
+};
+
+struct SocketAddress 
+{
+	long ip;
+	long port;
+};
+
+struct ConnectionInfo 
+{
+	long connectionType;
+	struct SocketAddress device;
+	struct SocketAddress desktop;
+};
+
+[
+	object,
+	uuid(E78EBC7D-F974-4A86-8560-28E1CBBCE7C5),
+	dual,
+	nonextensible,
+	helpstring("IRAPIUtils Interface"),
+	pointer_default(unique)
+]
+interface IRAPIUtils : IDispatch
+{
+	[id(1), helpstring("method GetConnectionInfo")] HRESULT GetConnectionInfo([out,retval] struct ConnectionInfo* pConnectionInfo);
+};
+
+[
+	uuid(7A72F6C5-5BD8-4D6E-B2DD-182C40D20E90),
+	version(1.0),
+	helpstring("LSRAPI 1.0 Type Library")
+]
+library LSRAPILib
+{
+	importlib("stdole2.tlb");
+
+	[
+		uuid(39515898-AF1A-4072-AFF7-F75C6956A8BD),
+		helpstring("RAPIUtils Class")
+	]
+	coclass RAPIUtils
+	{
+		[default] interface IRAPIUtils;
+	};
+};

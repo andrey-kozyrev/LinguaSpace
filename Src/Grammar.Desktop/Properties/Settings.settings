@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LinguaSpace.Grammar.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="COMPANY" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LinguaSpace</Value>
+    </Setting>
+    <Setting Name="PRODUCT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Grammar</Value>
+    </Setting>
+    <Setting Name="VERSION" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3.0.0</Value>
+    </Setting>
+    <Setting Name="WINDOWPLACEMENT" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="GrammarWindowPlacement" Type="LinguaSpace.Common.UI.WindowPlacement" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExampleWindowPlacement" Type="LinguaSpace.Common.UI.WindowPlacement" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MainWindowPlacement" Type="LinguaSpace.Common.UI.WindowPlacement" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PracticeWindowPlacement" Type="LinguaSpace.Common.UI.WindowPlacement" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RuleWindowPlacement" Type="LinguaSpace.Common.UI.WindowPlacement" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TopicWindowPlacement" Type="LinguaSpace.Common.UI.WindowPlacement" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

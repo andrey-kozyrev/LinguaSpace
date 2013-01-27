@@ -1,0 +1,10 @@
+; LSRAPI.def : Declares the module parameters.
+
+LIBRARY      "LSRAPI.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE
+	DllInstall		PRIVATE

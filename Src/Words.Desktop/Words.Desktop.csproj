@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC096C64-ACE6-4F6E-B3B9-B542E1CA7B37}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>LinguaSpace.Words</RootNamespace>
+    <AssemblyName>Words</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>winexe</OutputType>
+    <MinFrameworkVersionRequired>3.0</MinFrameworkVersionRequired>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ApplicationIcon>LinguaSpace.ico</ApplicationIcon>
+    <PublishUrl>Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Desktop\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PLATFORM_DESKTOP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Desktop\Release\</OutputPath>
+    <DefineConstants>TRACE;PLATFORM_DESKTOP</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="rapi2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Compression.Base">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Syncfusion.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComponentModel\PresentationModel.cs" />
+    <Compile Include="ComponentModel\SyncModel.cs" />
+    <Compile Include="Data\DataSet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\Tables.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComponentModel\Validation.cs" />
+    <Compile Include="ComponentModel\WordsTextUtils.cs" />
+    <Compile Include="IO\FileUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EmbeddedResource Include="Resources\Schema\Vocabulary.sql" />
+    <EmbeddedResource Include="Resources\Schema\Profile.sql" />
+    <EmbeddedResource Include="UI\ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Strings.Designer.cs">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="UI\AboutWnd.xaml.cs">
+      <DependentUpon>AboutWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CheckListBox.cs" />
+    <Compile Include="UI\CopyProgressWnd.xaml.cs">
+      <DependentUpon>CopyProgressWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FlashCardsWnd.xaml.cs">
+      <DependentUpon>FlashCardsWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\InputLanguageUtils.cs" />
+    <Compile Include="UI\LinguaSpaceWnd.xaml.cs">
+      <DependentUpon>LinguaSpaceWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MeaningFindWnd.xaml.cs">
+      <DependentUpon>MeaningFindWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MeaningWnd.xaml.cs">
+      <DependentUpon>MeaningWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProfileWnd.xaml.cs">
+      <DependentUpon>ProfileWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RegistrationWnd.xaml.cs">
+      <DependentUpon>RegistrationWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SyncWnd.xaml.cs">
+      <DependentUpon>SyncWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TextWnd.xaml.cs">
+      <DependentUpon>TextWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ValueConverters.cs" />
+    <Compile Include="UI\VocabularyWnd.xaml.cs">
+      <DependentUpon>VocabularyWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\WordFindWnd.xaml.cs">
+      <DependentUpon>WordFindWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\WordWnd.xaml.cs">
+      <DependentUpon>WordWnd.xaml</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LinguaSpace.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.Desktop.csproj">
+      <Project>{96AB09D1-E38E-494C-BA09-6852FFDFF71D}</Project>
+      <Name>Common.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Practice\Practice.Desktop.csproj">
+      <Project>{2CE55ABE-C028-4E9E-A9F4-042983C865D5}</Project>
+      <Name>Practice.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sync\Sync.Desktop.csproj">
+      <Project>{6D8A382D-EC3D-4438-AD15-A9A3E81E1A17}</Project>
+      <Name>Sync.Desktop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Highlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\MoveDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\MoveUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Touch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Exercise\FlashCards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\File\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\File\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\File\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\File\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\File\Properties.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\File\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\File\SaveAs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Help\Contents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Help\Register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\LinguaSpace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Navigate\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Navigate\Forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Status\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Status\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Status\OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Status\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\User\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\User\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\User\Switch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\User\User.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\User\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Edit\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Edit\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Edit\Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Edit\Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Edit\MoveDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Edit\MoveUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Edit\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Exercise\FlashCards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\File\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\File\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\File\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\File\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\File\Properties.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\File\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\File\SaveAs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Help\Contents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\LinguaSpace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Navigate\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Navigate\Forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\PayPal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\ValidationError.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\ValidationOK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\ValidationWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\Status\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32\User\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\LinguaSpace.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\New.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Profile.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Vocabulary.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UI\AboutWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\CopyProgressWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\FlashCardsWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\LinguaSpaceWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\MeaningFindWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\MeaningWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\ProfileWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\RegistrationWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\SyncWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\TextWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\VocabularyWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\WordFindWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\WordWnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\16\Edit\Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\FileCopy.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,26 @@
+HKCR
+{
+	LSRAPI.RAPIUtils.1 = s 'RAPIUtils Class'
+	{
+		CLSID = s '{39515898-AF1A-4072-AFF7-F75C6956A8BD}'
+	}
+	LSRAPI.RAPIUtils = s 'RAPIUtils Class'
+	{
+		CLSID = s '{39515898-AF1A-4072-AFF7-F75C6956A8BD}'
+		CurVer = s 'LSRAPI.RAPIUtils.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {39515898-AF1A-4072-AFF7-F75C6956A8BD} = s 'RAPIUtils Class'
+		{
+			ProgID = s 'LSRAPI.RAPIUtils.1'
+			VersionIndependentProgID = s 'LSRAPI.RAPIUtils'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{7A72F6C5-5BD8-4D6E-B2DD-182C40D20E90}'
+		}
+	}
+}
