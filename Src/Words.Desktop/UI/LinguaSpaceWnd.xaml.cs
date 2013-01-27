@@ -20,7 +20,6 @@ using System.Runtime.InteropServices;
 using System.Net;
 using System.Net.Sockets;
 using System.Data;
-using System.Devices;
 
 using Microsoft.Win32;
 
@@ -34,7 +33,6 @@ using LinguaSpace.Words.Data;
 using LinguaSpace.Words.Resources;
 using LinguaSpace.Words.Practice;
 using LinguaSpace.Words.ComponentModel;
-using LinguaSpace.Sync;
 
 namespace LinguaSpace.Words.UI
 {
@@ -43,9 +41,7 @@ namespace LinguaSpace.Words.UI
 		private LinguaSpaceModel model;
 		private bool meaningsReady = true;
 		private Guid meaningGuid = Guid.Empty;
-		private RemoteDeviceManager _rdm;
         private ListBoxHistory history;
-		private SyncServer _sync;
 
         public LinguaSpaceWnd()
         {
@@ -736,41 +732,6 @@ namespace LinguaSpace.Words.UI
 		private void OnUserSwitch(Object sender, ExecutedRoutedEventArgs e)
 		{
 			DoOpenProfile();
-		}
-
-		[System.Reflection.Obfuscation(Exclude = true)]
-		private void OnCanMobileExplore(Object sender, CanExecuteRoutedEventArgs e)
-		{
-			e.CanExecute = (_rdm.Devices.FirstConnectedDevice != null);
-		}
-
-		[System.Reflection.Obfuscation(Exclude = true)]
-		private void OnMobileExplore(Object sender, ExecutedRoutedEventArgs e)
-		{
-			String repository = (String)e.Parameter;
-			String extension = "ls" + repository.Substring(0, 1).ToLower();
-			try
-			{
-				SyncWnd wnd = new SyncWnd(new SyncModel(_rdm, repository, extension));
-				wnd.Owner = this;
-				wnd.ShowDialog();
-			}
-			catch (Exception err)
-			{
-				MessageBox.Show("Error communicating with mobile device", Title, MessageBoxButton.OK, MessageBoxImage.Error);
-			}
-		}
-
-		[System.Reflection.Obfuscation(Exclude = true)]
-		private void OnCanMobileSynchronize(Object sender, CanExecuteRoutedEventArgs e)
-		{
-			e.CanExecute = (_rdm.Devices.FirstConnectedDevice != null);
-		}
-
-		[System.Reflection.Obfuscation(Exclude = true)]
-		private void OnMobileSynchronize(Object sender, ExecutedRoutedEventArgs e)
-		{
-			;
 		}
 
         [System.Reflection.Obfuscation(Exclude = true)]

@@ -113,8 +113,6 @@
         <CommandBinding Command="{x:Static ui:NavigateCommands.Back}" CanExecute="OnCanBack" Executed="OnBack"/>
         <CommandBinding Command="{x:Static ui:NavigateCommands.Forward}" CanExecute="OnCanForward" Executed="OnForward"/>
         <CommandBinding Command="{x:Static ui:ShellCommands.Open}" CanExecute="OnCanShellOpen" Executed="OnShellOpen"/>
-        <CommandBinding Command="{x:Static ui:MobileCommands.Explore}" CanExecute="OnCanMobileExplore" Executed="OnMobileExplore"/>
-        <CommandBinding Command="{x:Static ui:MobileCommands.Synchronize}" CanExecute="OnCanMobileSynchronize" Executed="OnMobileSynchronize"/>
     </Window.CommandBindings>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">

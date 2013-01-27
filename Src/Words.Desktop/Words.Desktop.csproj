@@ -51,16 +51,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="rapi2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Compression.Base">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="Syncfusion.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="Syncfusion.Pdf.Base">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -114,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComponentModel\PresentationModel.cs" />
-    <Compile Include="ComponentModel\SyncModel.cs" />
     <Compile Include="Data\DataSet.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -195,9 +184,6 @@
     <Compile Include="UI\RegistrationWnd.xaml.cs">
       <DependentUpon>RegistrationWnd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\SyncWnd.xaml.cs">
-      <DependentUpon>SyncWnd.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\TextWnd.xaml.cs">
       <DependentUpon>TextWnd.xaml</DependentUpon>
     </Compile>
@@ -224,10 +210,6 @@
     <ProjectReference Include="..\Practice\Practice.Desktop.csproj">
       <Project>{2CE55ABE-C028-4E9E-A9F4-042983C865D5}</Project>
       <Name>Practice.Desktop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sync\Sync.Desktop.csproj">
-      <Project>{6D8A382D-EC3D-4438-AD15-A9A3E81E1A17}</Project>
-      <Name>Sync.Desktop</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -490,12 +472,6 @@
     <Page Include="UI\RegistrationWnd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\SyncWnd.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
